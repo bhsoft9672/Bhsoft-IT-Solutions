@@ -33,24 +33,24 @@ export default function LoadingScreen() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#030712] transition-opacity duration-500 ${
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#f8fafc] transition-opacity duration-500 ${
         fade ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
       <div className="relative flex flex-col items-center">
-        {/* Glowing 3D-style Core loader ring */}
+        {/* Glowing 3D-style Core loader ring in Light Mode */}
         <div className="relative w-20 h-20 mb-6 flex items-center justify-center">
-          <div className="absolute inset-0 rounded-full border-t-2 border-r-2 border-cyan-400 animate-spin" />
-          <div className="absolute inset-2 rounded-full border-b-2 border-l-2 border-purple-500 animate-spin" style={{ animationDirection: 'reverse', animationDuration: '1.5s' }} />
-          <div className="w-4 h-4 rounded-full bg-cyan-400 shadow-[0_0_15px_#00F0FF]" />
+          <div className="absolute inset-0 rounded-full border-t-2 border-r-2 border-blue-600 animate-spin" />
+          <div className="absolute inset-2 rounded-full border-b-2 border-l-2 border-violet-600 animate-spin" style={{ animationDirection: 'reverse', animationDuration: '1.5s' }} />
+          <div className="w-4 h-4 rounded-full bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.6)]" />
         </div>
 
         {/* Brand Text */}
         <div className="text-center space-y-2">
-          <div className="text-2xl font-black tracking-wider text-white">
-            BH<span className="text-cyan-400">SOFT</span>
+          <div className="text-2xl font-black tracking-wider text-slate-900">
+            BH<span className="text-blue-600">SOFT</span>
           </div>
-          <div className="text-xs font-mono tracking-[0.28em] text-cyan-400/80 uppercase">
+          <div className="text-xs font-mono tracking-[0.28em] text-blue-700 uppercase font-bold">
             BUILD • AUTOMATE • SCALE
           </div>
         </div>

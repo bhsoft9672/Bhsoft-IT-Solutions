@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, MessageSquare, Sparkles } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 import Hero3DCore from './Hero3DCore';
 import { SITE_CONFIG } from '@/data/siteConfig';
 
@@ -10,39 +10,40 @@ export default function HeroSection() {
   const whatsappUrl = `https://wa.me/${SITE_CONFIG.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(SITE_CONFIG.whatsappMessage)}`;
 
   return (
-    <section className="relative min-h-[90vh] lg:min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden bg-grid-pattern">
-      {/* Ambient background glows */}
-      <div className="ambient-glow -top-20 -left-20 w-[500px] h-[500px] bg-cyan-500/15" />
-      <div className="ambient-glow top-1/3 -right-20 w-[600px] h-[600px] bg-purple-600/15" />
+    <section className="relative min-h-[90vh] lg:min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden bg-grid-pattern-light">
+      {/* Light Theme Ambient Glow Blobs */}
+      <div className="ambient-glow-light -top-20 -left-20 w-[550px] h-[550px] bg-blue-400/20" />
+      <div className="ambient-glow-light top-1/3 -right-20 w-[650px] h-[650px] bg-purple-400/15" />
+      <div className="ambient-glow-light -bottom-20 left-1/4 w-[500px] h-[500px] bg-cyan-400/15" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Core Value Proposition & Conversion CTAs */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-left">
             {/* Top Badge */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-medium tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs font-mono font-bold tracking-wide shadow-sm">
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-ping" />
               <span>● SOFTWARE • WEBSITES • AUTOMATION • AI CALLING AGENTS</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white uppercase leading-[1.08]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 uppercase leading-[1.08]">
               WE BUILD <br />
-              <span className="text-gradient-cyan">THE DIGITAL SYSTEMS</span> <br />
+              <span className="text-gradient-blue">THE DIGITAL SYSTEMS</span> <br />
               THAT POWER GROWTH.
             </h1>
 
             {/* Highlighted Slogan */}
-            <div className="flex items-center gap-2 font-mono text-xs sm:text-sm tracking-widest uppercase text-cyan-400 font-bold">
+            <div className="flex items-center gap-2 font-mono text-xs sm:text-sm tracking-widest uppercase text-blue-600 font-extrabold">
               <span>Build Smarter.</span>
-              <span className="text-gray-600">•</span>
+              <span className="text-slate-400">•</span>
               <span>Automate Faster.</span>
-              <span className="text-gray-600">•</span>
+              <span className="text-slate-400">•</span>
               <span>Grow Bigger.</span>
             </div>
 
             {/* Supporting Copy */}
-            <p className="text-base sm:text-lg text-gray-300 max-w-xl leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed font-normal">
               {SITE_CONFIG.heroSubtitle}
             </p>
 
@@ -50,14 +51,14 @@ export default function HeroSection() {
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-extrabold text-sm uppercase tracking-wider transition-all shadow-[0_0_25px_rgba(0,240,255,0.45)] hover:shadow-[0_0_35px_rgba(0,240,255,0.6)]"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white font-extrabold text-sm uppercase tracking-wider transition-all shadow-[0_8px_25px_rgba(37,99,235,0.35)] hover:shadow-[0_12px_32px_rgba(37,99,235,0.45)] hover:scale-105 active:scale-95"
               >
                 <span>{SITE_CONFIG.primaryCtaText} →</span>
               </Link>
 
               <Link
                 href="/#services"
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold text-sm tracking-wide border border-white/10 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm tracking-wide border border-slate-200/90 shadow-sm hover:border-slate-300 transition-all hover:scale-105 active:scale-95"
               >
                 <span>{SITE_CONFIG.secondaryCtaText}</span>
               </Link>
@@ -66,26 +67,26 @@ export default function HeroSection() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-sm font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-emerald-50 hover:bg-emerald-100/80 text-emerald-700 border border-emerald-200/90 text-sm font-bold shadow-sm transition-all hover:scale-105 active:scale-95"
               >
-                <MessageSquare className="w-4 h-4" />
+                <MessageSquare className="w-4 h-4 fill-emerald-600" />
                 <span>WhatsApp Us</span>
               </a>
             </div>
 
             {/* 5-Second Trust Proof */}
-            <div className="pt-4 flex items-center gap-6 text-xs text-gray-400 border-t border-white/10">
+            <div className="pt-6 flex flex-wrap items-center gap-8 text-xs text-slate-600 border-t border-slate-200">
               <div className="flex items-center gap-2">
-                <span className="text-cyan-400 font-bold text-sm">24/7</span>
-                <span>Autonomous Operation</span>
+                <span className="text-blue-600 font-extrabold text-sm">24/7</span>
+                <span className="font-semibold">Autonomous Operation</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-purple-400 font-bold text-sm">&lt; 3s</span>
-                <span>Response Latency</span>
+                <span className="text-violet-600 font-extrabold text-sm">&lt; 3s</span>
+                <span className="font-semibold">Response Latency</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-emerald-400 font-bold text-sm">100%</span>
-                <span>Custom Architecture</span>
+                <span className="text-emerald-600 font-extrabold text-sm">100%</span>
+                <span className="font-semibold">Custom Architecture</span>
               </div>
             </div>
           </div>

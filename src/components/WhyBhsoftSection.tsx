@@ -45,22 +45,22 @@ const REASONS = [
 
 export default function WhyBhsoftSection() {
   return (
-    <section className="relative py-24 sm:py-32">
+    <section className="relative py-24 sm:py-32 bg-white border-t border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono uppercase tracking-wider mb-4 font-bold shadow-xs">
             The BHSOFT Advantage
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase">
-            WHY BUSINESSES <span className="text-gradient-cyan">CHOOSE BHSOFT</span>.
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight uppercase">
+            WHY BUSINESSES <span className="text-gradient-blue">CHOOSE BHSOFT</span>.
           </h2>
-          <p className="text-sm sm:text-base text-gray-400 mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
             We operate as your dedicated fractional AI engineering & software product department.
           </p>
         </div>
 
-        {/* Reason Cards */}
+        {/* Reason Cards in Light Theme */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {REASONS.map((reason, idx) => {
             const Icon = reason.icon;
@@ -68,18 +68,18 @@ export default function WhyBhsoftSection() {
             return (
               <div
                 key={idx}
-                className="p-7 rounded-2xl bg-gradient-to-b from-[#0a0f1d]/80 to-[#04060d]/80 border border-white/10 hover:border-cyan-400/40 hover:shadow-[0_0_30px_rgba(0,240,255,0.12)] transition-all flex flex-col justify-between"
+                className="p-8 rounded-3xl bg-slate-50/70 border border-slate-200/90 hover:border-blue-400 hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-5">
+                  <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 mb-5 shadow-xs">
                     <Icon className="w-6 h-6" />
                   </div>
 
-                  <h3 className="text-base font-bold text-white tracking-wide">
+                  <h3 className="text-base font-bold text-slate-900 tracking-wide">
                     {reason.title}
                   </h3>
 
-                  <p className="text-xs text-gray-400 mt-2.5 leading-relaxed">
+                  <p className="text-xs text-slate-600 mt-2.5 leading-relaxed font-normal">
                     {reason.desc}
                   </p>
                 </div>

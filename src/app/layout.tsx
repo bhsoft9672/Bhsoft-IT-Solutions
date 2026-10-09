@@ -54,8 +54,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className="bg-[#030712] text-gray-100 antialiased selection:bg-cyan-400 selection:text-black">
+    <html lang="en" className="light scroll-smooth">
+      <body className="bg-[#f8fafc] text-slate-900 antialiased selection:bg-blue-600 selection:text-white">
         <LoadingScreen />
         <CustomCursor />
         <Navbar />

@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { 
-  ArrowRight, 
   User, 
   MessageSquare, 
   Bot, 
@@ -94,26 +93,26 @@ export default function AutomationWorkflow3D() {
   const [selectedNode, setSelectedNode] = useState<WorkflowNode>(WORKFLOW_NODES[2]);
 
   return (
-    <div className="relative rounded-2xl bg-gradient-to-b from-[#090d19]/95 to-[#04060d]/95 border border-white/10 p-6 sm:p-10 shadow-2xl overflow-hidden">
-      {/* Background glow and subtle circuit styling */}
-      <div className="absolute -top-10 -left-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-10 -right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="relative rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-10 shadow-xl overflow-hidden">
+      {/* Light background subtle blurs */}
+      <div className="absolute -top-10 -left-10 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-10 -right-10 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-3">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono uppercase tracking-wider mb-3 font-bold">
           <Sparkles className="w-3.5 h-3.5" />
           Interactive 3D Workflow Architecture
         </div>
-        <h3 className="text-2xl sm:text-3xl font-black text-white">
+        <h3 className="text-2xl sm:text-3xl font-black text-slate-900 uppercase">
           THE END-TO-END AUTONOMOUS PIPELINE
         </h3>
-        <p className="text-sm text-gray-400 mt-2">
+        <p className="text-sm text-slate-600 mt-2">
           Click any stage of the pipeline to inspect how our AI systems turn incoming business problems into automated revenue.
         </p>
       </div>
 
-      {/* Interactive Horizontal / Flow Grid */}
+      {/* Interactive Horizontal Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 relative z-10 mb-8">
         {WORKFLOW_NODES.map((node, index) => {
           const Icon = node.icon;
@@ -123,26 +122,26 @@ export default function AutomationWorkflow3D() {
             <div key={node.id} className="relative flex flex-col items-center">
               <button
                 onClick={() => setSelectedNode(node)}
-                className={`w-full group p-3.5 rounded-xl border text-left flex flex-col justify-between h-36 transition-all duration-300 ${
+                className={`w-full group p-3.5 rounded-2xl border text-left flex flex-col justify-between h-36 transition-all duration-300 ${
                   isSelected
-                    ? 'bg-cyan-950/40 border-cyan-400 shadow-[0_0_20px_rgba(0,240,255,0.25)] -translate-y-1'
-                    : 'bg-white/[0.02] border-white/10 hover:border-white/20 hover:bg-white/[0.04]'
+                    ? 'bg-blue-50/80 border-blue-500 shadow-md -translate-y-1'
+                    : 'bg-slate-50/70 border-slate-200 hover:border-slate-300 hover:bg-white'
                 }`}
               >
                 <div className="flex items-center justify-between w-full">
-                  <span className={`text-[10px] font-mono font-bold ${isSelected ? 'text-cyan-400' : 'text-gray-400'}`}>
+                  <span className={`text-[10px] font-mono font-bold ${isSelected ? 'text-blue-700' : 'text-slate-400'}`}>
                     0{index + 1}
                   </span>
-                  <div className={`p-2 rounded-lg ${isSelected ? 'bg-cyan-400 text-black' : 'bg-white/5 text-gray-300 group-hover:text-cyan-400'}`}>
+                  <div className={`p-2 rounded-xl transition-colors ${isSelected ? 'bg-blue-600 text-white' : 'bg-white text-slate-700 group-hover:text-blue-600 border border-slate-200'}`}>
                     <Icon className="w-4 h-4" />
                   </div>
                 </div>
 
                 <div>
-                  <div className={`text-[10px] font-mono tracking-wider uppercase line-clamp-1 ${isSelected ? 'text-cyan-300' : 'text-gray-400'}`}>
+                  <div className={`text-[10px] font-mono tracking-wider uppercase line-clamp-1 font-semibold ${isSelected ? 'text-blue-700' : 'text-slate-500'}`}>
                     {node.category}
                   </div>
-                  <div className="text-xs font-bold text-white mt-0.5 group-hover:text-cyan-300 transition-colors">
+                  <div className="text-xs font-bold text-slate-900 mt-0.5 group-hover:text-blue-600 transition-colors">
                     {node.title}
                   </div>
                 </div>
@@ -150,7 +149,7 @@ export default function AutomationWorkflow3D() {
 
               {/* Connecting arrow indicator for desktop */}
               {index < WORKFLOW_NODES.length - 1 && (
-                <div className="hidden lg:block absolute -right-2.5 top-1/2 -translate-y-1/2 z-20 text-cyan-500/40 pointer-events-none">
+                <div className="hidden lg:block absolute -right-2.5 top-1/2 -translate-y-1/2 z-20 text-slate-300 pointer-events-none">
                   <ChevronRight className="w-4 h-4" />
                 </div>
               )}
@@ -159,44 +158,44 @@ export default function AutomationWorkflow3D() {
         })}
       </div>
 
-      {/* Selected Node Detailed Glass Inspection Card */}
-      <div className="relative p-6 sm:p-7 rounded-xl bg-[#03060f]/90 border border-cyan-500/30 shadow-xl backdrop-blur-md">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-white/10">
+      {/* Selected Node Detailed Inspection Card in Light Theme */}
+      <div className="relative p-6 sm:p-7 rounded-2xl bg-slate-50/90 border border-blue-200 shadow-sm backdrop-blur-md">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-cyan-400 text-black flex items-center justify-center font-bold shadow-[0_0_15px_#00F0FF]">
+            <div className="w-11 h-11 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold shadow-sm">
               {React.createElement(selectedNode.icon, { className: 'w-5 h-5' })}
             </div>
             <div>
-              <span className="text-[10px] font-mono tracking-widest text-cyan-400 uppercase">
+              <span className="text-[10px] font-mono tracking-widest text-blue-700 uppercase font-bold">
                 {selectedNode.category}
               </span>
-              <h4 className="text-lg font-bold text-white flex items-center gap-2">
+              <h4 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 {selectedNode.title}
               </h4>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-mono text-gray-400">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+          <div className="flex items-center gap-2 text-xs font-mono text-emerald-700 font-semibold bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+            <span className="w-2 h-2 rounded-full bg-emerald-600 animate-ping" />
             Live System Telemetry Active
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
           <div>
-            <h5 className="text-xs font-mono text-gray-400 uppercase tracking-wider mb-1">
+            <h5 className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1 font-bold">
               Operational Logic:
             </h5>
-            <p className="text-sm text-gray-300 leading-relaxed">
+            <p className="text-sm text-slate-700 leading-relaxed font-normal">
               {selectedNode.description}
             </p>
           </div>
 
-          <div className="p-3.5 rounded-lg bg-white/5 border border-white/5">
-            <h5 className="text-[11px] font-mono text-cyan-400 uppercase tracking-wider mb-1">
+          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs">
+            <h5 className="text-[11px] font-mono text-blue-700 uppercase tracking-wider mb-1 font-bold">
               Engine Performance & Telemetry:
             </h5>
-            <p className="text-xs font-mono text-gray-300">
+            <p className="text-xs font-mono text-slate-600">
               {selectedNode.telemetry}
             </p>
           </div>

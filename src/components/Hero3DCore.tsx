@@ -14,7 +14,6 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
     const container = containerRef.current;
     if (!container) return;
 
-    // Check WebGL availability
     let canvas: HTMLCanvasElement;
     try {
       canvas = document.createElement('canvas');
@@ -24,13 +23,13 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
       return;
     }
 
-    const width = container.clientWidth || 500;
-    const height = container.clientHeight || 500;
+    const width = container.clientWidth || 550;
+    const height = container.clientHeight || 550;
 
     // Three.js Scene Setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-    camera.position.z = 22;
+    camera.position.z = 24;
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -41,124 +40,124 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Group for all core elements
     const mainGroup = new THREE.Group();
     scene.add(mainGroup);
 
-    // 1. Central Core Sphere (Wireframe & Glowing Points)
-    const sphereGeo = new THREE.IcosahedronGeometry(4.2, 3);
-    const sphereMat = new THREE.MeshBasicMaterial({
-      color: 0x00f0ff,
+    // 1. Central Iridescent AI Orb (Light Theme)
+    // Outer wireframe sphere in vibrant sapphire blue
+    const outerGeo = new THREE.IcosahedronGeometry(4.6, 3);
+    const outerMat = new THREE.MeshBasicMaterial({
+      color: 0x2563eb,
       wireframe: true,
       transparent: true,
-      opacity: 0.28
+      opacity: 0.35
     });
-    const coreSphere = new THREE.Mesh(sphereGeo, sphereMat);
-    mainGroup.add(coreSphere);
+    const outerSphere = new THREE.Mesh(outerGeo, outerMat);
+    mainGroup.add(outerSphere);
 
-    // Inner glowing sphere
-    const innerGeo = new THREE.IcosahedronGeometry(2.4, 2);
+    // Inner iridescent core sphere in violet & cyan
+    const innerGeo = new THREE.IcosahedronGeometry(2.8, 2);
     const innerMat = new THREE.MeshBasicMaterial({
-      color: 0x8b5cf6,
+      color: 0x7c3aed,
       wireframe: true,
       transparent: true,
-      opacity: 0.45
+      opacity: 0.6
     });
     const innerSphere = new THREE.Mesh(innerGeo, innerMat);
     mainGroup.add(innerSphere);
 
-    // 2. Orbital Rings
-    const ringMaterials = [
-      new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.35 }),
-      new THREE.LineBasicMaterial({ color: 0x8b5cf6, transparent: true, opacity: 0.35 }),
-      new THREE.LineBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.25 })
-    ];
+    // Center radiant core node
+    const nucleusGeo = new THREE.SphereGeometry(1.2, 16, 16);
+    const nucleusMat = new THREE.MeshBasicMaterial({
+      color: 0x0284c7,
+      transparent: true,
+      opacity: 0.75
+    });
+    const nucleus = new THREE.Mesh(nucleusGeo, nucleusMat);
+    mainGroup.add(nucleus);
 
+    // 2. Holographic Orbital Rings
+    const ringColors = [0x2563eb, 0x7c3aed, 0x06b6d4];
     const rings: THREE.Line[] = [];
-    const ringRadii = [6.5, 8.2, 9.8];
+    const ringRadii = [7.0, 8.8, 10.5];
     const ringRotations = [
-      { x: Math.PI / 4, y: 0, z: Math.PI / 6 },
-      { x: -Math.PI / 3, y: Math.PI / 5, z: 0 },
-      { x: Math.PI / 6, y: -Math.PI / 4, z: Math.PI / 3 }
+      { x: Math.PI / 3.5, y: 0, z: Math.PI / 5 },
+      { x: -Math.PI / 3, y: Math.PI / 4, z: 0 },
+      { x: Math.PI / 5, y: -Math.PI / 3.5, z: Math.PI / 4 }
     ];
 
     ringRadii.forEach((radius, idx) => {
       const ringPoints: THREE.Vector3[] = [];
-      const segments = 64;
+      const segments = 80;
       for (let i = 0; i <= segments; i++) {
         const theta = (i / segments) * Math.PI * 2;
         ringPoints.push(new THREE.Vector3(Math.cos(theta) * radius, 0, Math.sin(theta) * radius));
       }
       const ringGeo = new THREE.BufferGeometry().setFromPoints(ringPoints);
-      const ring = new THREE.Line(ringGeo, ringMaterials[idx % ringMaterials.length]);
+      const ringMat = new THREE.LineBasicMaterial({
+        color: ringColors[idx],
+        transparent: true,
+        opacity: 0.45
+      });
+      const ring = new THREE.Line(ringGeo, ringMat);
       ring.rotation.set(ringRotations[idx].x, ringRotations[idx].y, ringRotations[idx].z);
       mainGroup.add(ring);
       rings.push(ring);
     });
 
-    // 3. Orbiting Data Nodes (Representing AI, CRM, API, Data, Cloud)
-    const nodeCount = 12;
+    // 3. Orbiting Data Nodes (AI, Phone, Code, Cloud, CRM)
+    const nodeCount = 14;
     const nodeGeos = [
-      new THREE.BoxGeometry(0.7, 0.7, 0.7),
-      new THREE.OctahedronGeometry(0.55),
-      new THREE.TetrahedronGeometry(0.6)
+      new THREE.BoxGeometry(0.75, 0.75, 0.75),
+      new THREE.OctahedronGeometry(0.6),
+      new THREE.TetrahedronGeometry(0.65)
     ];
-    const nodeMat = new THREE.MeshBasicMaterial({
-      color: 0x00f0ff,
-      wireframe: true
-    });
-    const nodeMatViolet = new THREE.MeshBasicMaterial({
-      color: 0xa855f7,
-      wireframe: true
-    });
+    const nodeMatBlue = new THREE.MeshBasicMaterial({ color: 0x2563eb, wireframe: true });
+    const nodeMatViolet = new THREE.MeshBasicMaterial({ color: 0x7c3aed, wireframe: true });
+    const nodeMatCyan = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true });
 
-    const nodes: { mesh: THREE.Mesh; orbitRadius: number; speed: number; angle: number; yOffset: number; axis: THREE.Vector3 }[] = [];
+    const nodes: { mesh: THREE.Mesh; orbitRadius: number; speed: number; angle: number; yOffset: number }[] = [];
     for (let i = 0; i < nodeCount; i++) {
       const geom = nodeGeos[i % nodeGeos.length];
-      const mat = i % 2 === 0 ? nodeMat : nodeMatViolet;
+      const mat = i % 3 === 0 ? nodeMatBlue : i % 3 === 1 ? nodeMatViolet : nodeMatCyan;
       const mesh = new THREE.Mesh(geom, mat);
-      const orbitRadius = 6.0 + (i % 3) * 1.8;
-      const speed = 0.008 + (i % 4) * 0.004;
+      const orbitRadius = 6.4 + (i % 3) * 1.9;
+      const speed = 0.007 + (i % 4) * 0.003;
       const angle = (i / nodeCount) * Math.PI * 2;
-      const yOffset = ((i % 5) - 2) * 1.2;
-      const axis = new THREE.Vector3(
-        (Math.random() - 0.5) * 0.5,
-        1,
-        (Math.random() - 0.5) * 0.5
-      ).normalize();
+      const yOffset = ((i % 5) - 2) * 1.3;
 
       mainGroup.add(mesh);
-      nodes.push({ mesh, orbitRadius, speed, angle, yOffset, axis });
+      nodes.push({ mesh, orbitRadius, speed, angle, yOffset });
     }
 
-    // 4. Particle Cloud / Field
-    const particleCount = 180;
+    // 4. Subtle Particle Field for Light Background
+    const particleCount = 150;
     const particleGeo = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     for (let i = 0; i < particleCount * 3; i += 3) {
-      positions[i] = (Math.random() - 0.5) * 28;
-      positions[i + 1] = (Math.random() - 0.5) * 28;
-      positions[i + 2] = (Math.random() - 0.5) * 18;
+      positions[i] = (Math.random() - 0.5) * 30;
+      positions[i + 1] = (Math.random() - 0.5) * 30;
+      positions[i + 2] = (Math.random() - 0.5) * 20;
     }
     particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     const particleMat = new THREE.PointsMaterial({
-      color: 0x00f0ff,
-      size: 0.12,
+      color: 0x3b82f6,
+      size: 0.16,
       transparent: true,
-      opacity: 0.6
+      opacity: 0.5
     });
     const particles = new THREE.Points(particleGeo, particleMat);
     mainGroup.add(particles);
 
-    // Mouse Interaction
+    // Mouse Parallax Interaction
     let targetRotationX = 0;
     let targetRotationY = 0;
     const handleMouseMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-      targetRotationY = x * 0.45;
-      targetRotationX = -y * 0.35;
+      targetRotationY = x * 0.5;
+      targetRotationX = -y * 0.4;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -176,16 +175,22 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
     };
     window.addEventListener('resize', handleResize);
 
-    // Animation Loop
+    // Render Animation Loop
     let animId: number;
+    let clock = 0;
     const animate = () => {
       animId = requestAnimationFrame(animate);
+      clock += 0.015;
 
-      // Core rotation
-      coreSphere.rotation.y += 0.003;
-      coreSphere.rotation.x += 0.0015;
-      innerSphere.rotation.y -= 0.006;
-      innerSphere.rotation.z += 0.003;
+      // Pulse nucleus
+      const pulseScale = 1 + Math.sin(clock * 2) * 0.08;
+      nucleus.scale.set(pulseScale, pulseScale, pulseScale);
+
+      // Core rotations
+      outerSphere.rotation.y += 0.0025;
+      outerSphere.rotation.x += 0.001;
+      innerSphere.rotation.y -= 0.005;
+      innerSphere.rotation.z += 0.0025;
 
       // Rotate rings
       rings.forEach((r, idx) => {
@@ -197,13 +202,13 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
         n.angle += n.speed;
         n.mesh.position.x = Math.cos(n.angle) * n.orbitRadius;
         n.mesh.position.z = Math.sin(n.angle) * n.orbitRadius;
-        n.mesh.position.y = n.yOffset + Math.sin(n.angle * 2) * 0.8;
-        n.mesh.rotation.x += 0.02;
-        n.mesh.rotation.y += 0.02;
+        n.mesh.position.y = n.yOffset + Math.sin(n.angle * 2) * 0.9;
+        n.mesh.rotation.x += 0.018;
+        n.mesh.rotation.y += 0.018;
       });
 
-      // Subtle particle float
-      particles.rotation.y += 0.0008;
+      // Subtle particle drift
+      particles.rotation.y += 0.0006;
 
       // Mouse smoothing
       mainGroup.rotation.y += (targetRotationY - mainGroup.rotation.y) * 0.05;
@@ -228,11 +233,11 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-[380px] sm:h-[480px] lg:h-[580px] flex items-center justify-center pointer-events-auto ${className}`}
-      aria-label="Interactive 3D AI Automation Core"
+      className={`relative w-full h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center pointer-events-auto ${className}`}
+      aria-label="Interactive 3D AI Digital Core"
     >
-      {/* Background radial glow */}
-      <div className="absolute inset-0 bg-radial from-cyan-500/10 via-purple-500/5 to-transparent blur-2xl pointer-events-none" />
+      {/* Background radial light glow */}
+      <div className="absolute inset-0 bg-radial from-blue-500/15 via-purple-500/10 to-transparent blur-3xl pointer-events-none" />
     </div>
   );
 }

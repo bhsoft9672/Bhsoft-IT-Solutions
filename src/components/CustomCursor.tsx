@@ -70,14 +70,14 @@ export default function CustomCursor() {
       {/* Center Dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 -ml-1 -mt-1 w-2 h-2 rounded-full bg-cyan-400 pointer-events-none transition-opacity duration-200"
+        className="fixed top-0 left-0 -ml-1 -mt-1 w-2 h-2 rounded-full bg-blue-600 pointer-events-none transition-opacity duration-200"
       />
       {/* Outer Ring */}
       <div
         ref={ringRef}
-        className={`fixed top-0 left-0 -ml-4 -mt-4 rounded-full border border-cyan-400/40 pointer-events-none transition-all duration-200 ease-out ${
+        className={`fixed top-0 left-0 -ml-4 -mt-4 rounded-full border border-blue-500/50 pointer-events-none transition-all duration-200 ease-out ${
           isHovered
-            ? 'w-12 h-12 -ml-6 -mt-6 border-cyan-300 bg-cyan-500/10 backdrop-blur-[1px]'
+            ? 'w-12 h-12 -ml-6 -mt-6 border-blue-600 bg-blue-500/15 backdrop-blur-[1px]'
             : 'w-8 h-8'
         }`}
       />

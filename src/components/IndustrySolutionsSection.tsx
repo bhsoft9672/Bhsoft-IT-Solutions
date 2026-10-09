@@ -25,17 +25,17 @@ const INDUSTRY_ICONS: Record<string, React.ElementType> = {
 
 export default function IndustrySolutionsSection() {
   return (
-    <section id="solutions" className="relative py-24 sm:py-32">
+    <section id="solutions" className="relative py-24 sm:py-32 bg-white border-t border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono uppercase tracking-wider mb-4 font-bold">
             Vertical Tailored Architecture
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight uppercase">
-            BUILT FOR <span className="text-gradient-cyan">REAL BUSINESS</span>.
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight uppercase">
+            BUILT FOR <span className="text-gradient-blue">REAL BUSINESS</span>.
           </h2>
-          <p className="text-sm sm:text-base text-gray-400 mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
             We don&apos;t build abstract experiments. We deliver pragmatic AI agents, automated booking engines, and CRM systems customized to your industry&apos;s exact client lifecycle.
           </p>
         </div>
@@ -48,39 +48,39 @@ export default function IndustrySolutionsSection() {
             return (
               <div
                 key={idx}
-                className="group relative p-6 sm:p-7 rounded-2xl bg-gradient-to-b from-[#0b101d]/90 to-[#050811]/90 border border-white/10 hover:border-cyan-400/40 hover:shadow-[0_0_25px_rgba(0,240,255,0.12)] transition-all flex flex-col justify-between"
+                className="group relative p-7 rounded-3xl bg-slate-50/70 border border-slate-200/90 hover:border-blue-400 hover:shadow-[0_15px_30px_-10px_rgba(37,99,235,0.12)] transition-all flex flex-col justify-between hover:-translate-y-1.5"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black transition-colors">
+                    <div className="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-xs">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-mono text-gray-400">
+                    <span className="text-[10px] font-mono text-slate-400 font-bold">
                       VERTICAL 0{idx + 1}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     {ind.title}
                   </h3>
-                  <p className="text-xs text-gray-400 mt-1 leading-relaxed">
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed font-normal">
                     {ind.tagline}
                   </p>
 
-                  <div className="mt-5 space-y-2.5 pt-4 border-t border-white/5">
+                  <div className="mt-5 space-y-2.5 pt-4 border-t border-slate-200/70">
                     {ind.features.map((feat, fIdx) => (
-                      <div key={fIdx} className="flex items-start gap-2 text-xs text-gray-300">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                      <div key={fIdx} className="flex items-start gap-2 text-xs text-slate-600">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-white/10">
+                <div className="pt-6 mt-6 border-t border-slate-200/70">
                   <Link
                     href={`/contact?industry=${encodeURIComponent(ind.title)}`}
-                    className="w-full inline-flex items-center justify-between text-xs font-mono text-cyan-400 hover:text-white transition-colors"
+                    className="w-full inline-flex items-center justify-between text-xs font-mono font-bold text-blue-600 hover:text-blue-800 transition-colors"
                   >
                     <span>Deploy for {ind.title}</span>
                     <ArrowUpRight className="w-4 h-4" />
