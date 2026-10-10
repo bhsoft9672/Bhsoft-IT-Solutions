@@ -3,6 +3,7 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
 import TrustBar from '@/components/TrustBar';
+import AiVideoShowcaseSection from '@/components/AiVideoShowcaseSection';
 import ServicesSection from '@/components/ServicesSection';
 import BusinessProblemSection from '@/components/BusinessProblemSection';
 import AutomationWorkflow3D from '@/components/AutomationWorkflow3D';
@@ -31,6 +32,9 @@ export default function HomePage() {
 
       {/* 2. Trust Bar Immediately Below Hero */}
       <TrustBar />
+
+      {/* 2.5 Featured Interactive Live AI & Video Showcase */}
+      <AiVideoShowcaseSection />
 
       {/* 3. Services Section with Interactive 3D/Modal Experience */}
       <ServicesSection />

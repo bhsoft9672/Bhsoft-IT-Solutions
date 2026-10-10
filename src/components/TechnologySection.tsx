@@ -3,6 +3,7 @@
 import React from 'react';
 import { Layers, Database, Cpu, Zap, Cloud, Code2 } from 'lucide-react';
 import { TECH_STACK_CATEGORIES } from '@/data/siteData';
+import Interactive3DTechMatrix from './Interactive3DTechMatrix';
 
 const TECH_ICONS: Record<string, React.ElementType> = {
   "AI & Intelligence": Cpu,
@@ -21,7 +22,7 @@ export default function TechnologySection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono uppercase tracking-wider mb-4 font-bold shadow-xs">
             Engineering Backbone
           </div>
@@ -29,9 +30,12 @@ export default function TechnologySection() {
             THE TECHNOLOGY <span className="text-gradient-accent-light">BEHIND THE EXPERIENCE</span>.
           </h2>
           <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
-            We use production-grade, battle-tested modern infrastructure. No unstable toy frameworks — only scalable cloud systems, low-latency LLMs, and resilient micro-services.
+            Drag the 3D tech constellation to inspect our production infrastructure. No unstable toy frameworks — only scalable cloud systems, low-latency LLMs, and resilient micro-services.
           </p>
         </div>
+
+        {/* Interactive 3D Tech Constellation Matrix */}
+        <Interactive3DTechMatrix />
 
         {/* Tech Grid in Light Mode */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

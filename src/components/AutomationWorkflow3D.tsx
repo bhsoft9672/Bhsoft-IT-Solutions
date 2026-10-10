@@ -12,6 +12,7 @@ import {
   Sparkles,
   ChevronRight
 } from 'lucide-react';
+import Workflow3DScene from './Workflow3DScene';
 
 interface WorkflowNode {
   id: string;
@@ -90,7 +91,8 @@ const WORKFLOW_NODES: WorkflowNode[] = [
 ];
 
 export default function AutomationWorkflow3D() {
-  const [selectedNode, setSelectedNode] = useState<WorkflowNode>(WORKFLOW_NODES[2]);
+  const [selectedNodeIndex, setSelectedNodeIndex] = useState<number>(2);
+  const selectedNode = WORKFLOW_NODES[selectedNodeIndex];
 
   return (
     <div className="relative rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-10 shadow-xl overflow-hidden">
@@ -99,29 +101,35 @@ export default function AutomationWorkflow3D() {
       <div className="absolute -bottom-10 -right-10 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header */}
-      <div className="text-center max-w-2xl mx-auto mb-10">
+      <div className="text-center max-w-2xl mx-auto mb-6">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono uppercase tracking-wider mb-3 font-bold">
           <Sparkles className="w-3.5 h-3.5" />
           Interactive 3D Workflow Architecture
         </div>
-        <h3 className="text-2xl sm:text-3xl font-black text-slate-900 uppercase">
+        <h3 className="text-2xl sm:text-4xl font-black text-slate-900 uppercase">
           THE END-TO-END AUTONOMOUS PIPELINE
         </h3>
         <p className="text-sm text-slate-600 mt-2">
-          Click any stage of the pipeline to inspect how our AI systems turn incoming business problems into automated revenue.
+          Drag to rotate the real-time 3D pipeline in 360°. Click any 3D node or stage below to inspect our automated logic and live telemetry.
         </p>
       </div>
+
+      {/* Interactive 3D WebGL Canvas Scene */}
+      <Workflow3DScene
+        selectedNodeIndex={selectedNodeIndex}
+        onSelectNode={(idx) => setSelectedNodeIndex(idx)}
+      />
 
       {/* Interactive Horizontal Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 relative z-10 mb-8">
         {WORKFLOW_NODES.map((node, index) => {
           const Icon = node.icon;
-          const isSelected = selectedNode.id === node.id;
+          const isSelected = selectedNodeIndex === index;
 
           return (
             <div key={node.id} className="relative flex flex-col items-center">
               <button
-                onClick={() => setSelectedNode(node)}
+                onClick={() => setSelectedNodeIndex(index)}
                 className={`w-full group p-3.5 rounded-2xl border text-left flex flex-col justify-between h-36 transition-all duration-300 ${
                   isSelected
                     ? 'bg-blue-50/80 border-blue-500 shadow-md -translate-y-1'

@@ -28,6 +28,16 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Users
 };
 
+const SERVICE_IMAGE_MAP: Record<string, { image: string; tag: string }> = {
+  'ai-agents': { image: '/images/projects/shubh-voice-ai.jpg', tag: 'AI Voice Calling & Telephony' },
+  'automation': { image: '/images/projects/notifyflow-automation.jpg', tag: 'n8n Webhook Pipeline' },
+  'web-dev': { image: '/images/projects/maira-rugs.jpg', tag: 'Luxury 3D & E-Commerce' },
+  'mobile-apps': { image: '/images/projects/fashiontxt-showcase.jpg', tag: 'Cross-Platform Mobile Apps' },
+  'custom-software': { image: '/images/projects/ai-cold-caller.jpg', tag: 'Custom SaaS & Cloud Systems' },
+  'api-integration': { image: '/images/projects/swadhub-ordering.jpg', tag: 'WhatsApp Cloud & POS APIs' },
+  'crm': { image: '/images/projects/ideal-pathlabs.jpg', tag: 'Lead Funnel & Diagnostics' }
+};
+
 export default function ServicesSection() {
   const [activeModalService, setActiveModalService] = useState<ServiceItem | null>(null);
 
@@ -67,22 +77,45 @@ export default function ServicesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES_DATA.map((service) => {
             const Icon = ICON_MAP[service.iconName] || Bot;
+            const media = SERVICE_IMAGE_MAP[service.id];
 
             return (
               <div
                 key={service.id}
-                className="group relative p-7 rounded-2xl bg-white/85 border border-slate-200/90 hover:border-blue-500/50 hover:shadow-[0_15px_35px_-10px_rgba(37,99,235,0.15)] transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 backdrop-blur-md"
+                className="group relative p-6 sm:p-7 rounded-2xl bg-white/85 border border-slate-200/90 hover:border-blue-500/50 hover:shadow-[0_15px_35px_-10px_rgba(37,99,235,0.15)] transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 backdrop-blur-md"
               >
                 <div>
                   {/* Top card bar */}
-                  <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center justify-between mb-4">
                     <span className="text-xs font-mono font-bold text-blue-600 border border-blue-200 px-2 py-0.5 rounded-md bg-blue-50/80">
                       {service.number}
                     </span>
-                    <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-violet-600 group-hover:text-white group-hover:rotate-6 transition-all duration-300 shadow-xs">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-violet-600 group-hover:text-white group-hover:rotate-6 transition-all duration-300 shadow-xs">
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>
+
+                  {/* Real Image Preview Thumbnail with Interactive Tag */}
+                  {media && (
+                    <div className="relative h-36 w-full mb-4 rounded-xl overflow-hidden border border-slate-200 bg-slate-100 group/img">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={media.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[10px] font-mono">
+                        <span className="text-white font-bold bg-slate-900/80 px-2 py-0.5 rounded backdrop-blur-md">
+                          {media.tag}
+                        </span>
+                        <span className="text-cyan-300 font-bold bg-blue-950/80 px-2 py-0.5 rounded backdrop-blur-md flex items-center gap-1 border border-cyan-400/20">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                          Live Demo
+                        </span>
+                      </div>
+                    </div>
+                  )}
 
                   <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     {service.title}
@@ -93,7 +126,7 @@ export default function ServicesSection() {
                   </p>
 
                   {/* Bullet features preview */}
-                  <div className="mt-5 space-y-2 border-t border-slate-100 pt-4">
+                  <div className="mt-4 space-y-2 border-t border-slate-100 pt-3">
                     {service.features.slice(0, 3).map((feat, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-xs text-slate-600">
                         <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1.5 shrink-0" />

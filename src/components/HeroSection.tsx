@@ -56,12 +56,13 @@ export default function HeroSection() {
                 <span>{SITE_CONFIG.primaryCtaText} →</span>
               </Link>
 
-              <Link
-                href="/#services"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm tracking-wide border border-slate-200/90 shadow-sm hover:border-slate-300 transition-all hover:scale-105 active:scale-95"
+              <a
+                href="#video-showcase"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white hover:bg-blue-50 text-blue-700 font-bold text-sm tracking-wide border border-blue-200/90 shadow-sm hover:border-blue-400 transition-all hover:scale-105 active:scale-95 group"
               >
-                <span>{SITE_CONFIG.secondaryCtaText}</span>
-              </Link>
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping" />
+                <span>Watch Live AI Video Demos</span>
+              </a>
 
               <a
                 href={whatsappUrl}
@@ -94,6 +95,23 @@ export default function HeroSection() {
           {/* Right Column: 3D Interactive AI Digital Core */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
             <Hero3DCore />
+
+            {/* Floating Live AI Stream Telemetry Pill */}
+            <div className="absolute -bottom-4 sm:bottom-2 left-1/2 -translate-x-1/2 z-20 w-11/12 max-w-xs p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-xl flex items-center justify-between gap-3 text-left">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <div>
+                  <div className="text-[10px] font-mono font-bold text-slate-900 uppercase">AI Voice Bot Active</div>
+                  <div className="text-[9px] font-mono text-slate-500">Twilio SIP • &lt;580ms latency</div>
+                </div>
+              </div>
+              <a
+                href="#video-showcase"
+                className="px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-mono font-bold transition-all shadow-xs"
+              >
+                Play Demo
+              </a>
+            </div>
           </div>
         </div>
       </div>

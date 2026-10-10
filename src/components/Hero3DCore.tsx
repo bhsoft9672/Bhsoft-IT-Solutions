@@ -149,18 +149,57 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
     const particles = new THREE.Points(particleGeo, particleMat);
     mainGroup.add(particles);
 
-    // Mouse Parallax Interaction
+    // 5. Holographic Beacon Satellites with Mini Rings
+    const beaconColors = [0x00f2fe, 0x7c3aed, 0x10b981, 0x3b82f6];
+    const beacons: { mesh: THREE.Mesh; ring: THREE.Line; angle: number; radius: number; speed: number; y: number }[] = [];
+
+    beaconColors.forEach((col, i) => {
+      const bGeom = new THREE.SphereGeometry(0.4, 12, 12);
+      const bMat = new THREE.MeshBasicMaterial({ color: col });
+      const bMesh = new THREE.Mesh(bGeom, bMat);
+
+      // Mini ring
+      const bRingPts: THREE.Vector3[] = [];
+      for (let j = 0; j <= 24; j++) {
+        const th = (j / 24) * Math.PI * 2;
+        bRingPts.push(new THREE.Vector3(Math.cos(th) * 0.7, 0, Math.sin(th) * 0.7));
+      }
+      const bRingGeo = new THREE.BufferGeometry().setFromPoints(bRingPts);
+      const bRingMat = new THREE.LineBasicMaterial({ color: col, transparent: true, opacity: 0.6 });
+      const bRing = new THREE.Line(bRingGeo, bRingMat);
+      bRing.rotation.x = Math.PI / 4;
+      bMesh.add(bRing);
+
+      mainGroup.add(bMesh);
+      beacons.push({
+        mesh: bMesh,
+        ring: bRing,
+        angle: (i / beaconColors.length) * Math.PI * 2,
+        radius: 7.8 + (i % 2) * 1.5,
+        speed: 0.012 + i * 0.003,
+        y: (i - 1.5) * 1.8
+      });
+    });
+
+    // Mouse Parallax Interaction & Click Energy Burst
     let targetRotationX = 0;
     let targetRotationY = 0;
+    let energyBurst = 0;
+
     const handleMouseMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       const y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-      targetRotationY = x * 0.5;
-      targetRotationX = -y * 0.4;
+      targetRotationY = x * 0.55;
+      targetRotationX = -y * 0.45;
+    };
+
+    const handleClick = () => {
+      energyBurst = 2.8;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
+    renderer.domElement.addEventListener('click', handleClick);
 
     // Resize Handler
     const handleResize = () => {
@@ -182,33 +221,46 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
       animId = requestAnimationFrame(animate);
       clock += 0.015;
 
-      // Pulse nucleus
-      const pulseScale = 1 + Math.sin(clock * 2) * 0.08;
+      // Energy burst decay
+      energyBurst = Math.max(0, energyBurst - 0.035);
+      const speedMult = 1 + energyBurst * 1.5;
+
+      // Pulse nucleus with energy burst amplification
+      const pulseScale = (1 + Math.sin(clock * 2) * 0.08) * (1 + energyBurst * 0.25);
       nucleus.scale.set(pulseScale, pulseScale, pulseScale);
 
       // Core rotations
-      outerSphere.rotation.y += 0.0025;
-      outerSphere.rotation.x += 0.001;
-      innerSphere.rotation.y -= 0.005;
-      innerSphere.rotation.z += 0.0025;
+      outerSphere.rotation.y += 0.003 * speedMult;
+      outerSphere.rotation.x += 0.0015 * speedMult;
+      innerSphere.rotation.y -= 0.006 * speedMult;
+      innerSphere.rotation.z += 0.003 * speedMult;
 
       // Rotate rings
       rings.forEach((r, idx) => {
-        r.rotation.y += 0.002 * (idx % 2 === 0 ? 1 : -1);
+        r.rotation.y += 0.0025 * (idx % 2 === 0 ? 1 : -1) * speedMult;
       });
 
       // Update orbiting nodes
       nodes.forEach((n) => {
-        n.angle += n.speed;
+        n.angle += n.speed * speedMult;
         n.mesh.position.x = Math.cos(n.angle) * n.orbitRadius;
         n.mesh.position.z = Math.sin(n.angle) * n.orbitRadius;
         n.mesh.position.y = n.yOffset + Math.sin(n.angle * 2) * 0.9;
-        n.mesh.rotation.x += 0.018;
-        n.mesh.rotation.y += 0.018;
+        n.mesh.rotation.x += 0.02 * speedMult;
+        n.mesh.rotation.y += 0.02 * speedMult;
+      });
+
+      // Update Beacon Satellites
+      beacons.forEach((b) => {
+        b.angle += b.speed * speedMult;
+        b.mesh.position.x = Math.cos(b.angle) * b.radius;
+        b.mesh.position.z = Math.sin(b.angle) * b.radius;
+        b.mesh.position.y = b.y + Math.cos(b.angle * 2) * 0.6;
+        b.ring.rotation.y += 0.03 * speedMult;
       });
 
       // Subtle particle drift
-      particles.rotation.y += 0.0006;
+      particles.rotation.y += 0.0008;
 
       // Mouse smoothing
       mainGroup.rotation.y += (targetRotationY - mainGroup.rotation.y) * 0.05;
@@ -221,6 +273,7 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      renderer.domElement.removeEventListener('click', handleClick);
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animId);
       if (container && renderer.domElement) {
