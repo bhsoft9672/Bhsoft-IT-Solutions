@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ExternalLink, ArrowRight, ShieldCheck, CheckCircle2, ChevronLeft } from 'lucide-react';
 import { PROJECTS_DATA } from '@/data/siteData';
+import ProjectMediaCard from '@/components/ProjectMediaCard';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -89,6 +90,11 @@ export default async function ProjectDetailPage({ params }: Props) {
               <span>Build Similar System</span>
               <ArrowRight className="w-3.5 h-3.5 text-blue-600" />
             </Link>
+          </div>
+
+          {/* Project Media Showcase in Detail Page */}
+          <div className="mt-8 rounded-2xl overflow-hidden border border-slate-200 shadow-lg">
+            <ProjectMediaCard project={project} variant="detail" />
           </div>
         </div>
 

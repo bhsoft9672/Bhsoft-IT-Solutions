@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ExternalLink, ArrowRight, ShieldCheck } from 'lucide-react';
 import { PROJECTS_DATA } from '@/data/siteData';
+import ProjectMediaCard from '@/components/ProjectMediaCard';
 
 export default function SelectedWorkSection() {
   return (
@@ -19,7 +20,7 @@ export default function SelectedWorkSection() {
               SELECTED <span className="text-gradient-blue">WORK</span>.
             </h2>
             <p className="text-sm sm:text-base text-slate-600 max-w-2xl mt-3 leading-relaxed">
-              Explore real-world client platforms engineered by BHSOFT. From global luxury e-commerce (Maira Rugs) to autonomous AI Voice agents and enterprise automation pipelines.
+              Explore real-world client platforms engineered by BHSOFT. From global luxury e-commerce (Maira Rugs) to autonomous AI Voice agents, diagnostic portals, and enterprise automation pipelines.
             </p>
           </div>
 
@@ -41,7 +42,10 @@ export default function SelectedWorkSection() {
               key={proj.slug}
               className="group relative rounded-3xl bg-white border border-slate-200/90 hover:border-blue-500/50 hover:shadow-[0_20px_40px_-15px_rgba(37,99,235,0.18)] transition-all flex flex-col justify-between overflow-hidden hover:-translate-y-1.5"
             >
-              {/* Top Banner / Industry */}
+              {/* Media Card with Image + Interactive Video Simulation Toggle */}
+              <ProjectMediaCard project={proj} variant="card" />
+
+              {/* Main Content Info */}
               <div className="p-7">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-bold">
@@ -60,18 +64,29 @@ export default function SelectedWorkSection() {
                   {proj.subtitle}
                 </p>
 
+                {/* Key Metrics Stats Banner */}
+                {proj.stats && (
+                  <div className="grid grid-cols-3 gap-2 my-4 p-2.5 rounded-2xl bg-slate-50 border border-slate-100 text-center">
+                    {proj.stats.map((s, idx) => (
+                      <div key={idx} className="flex flex-col">
+                        <span className="text-xs font-black text-slate-900">{s.value}</span>
+                        <span className="text-[9px] font-mono text-slate-500 uppercase">{s.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 {/* Challenge & Solution Summary */}
-                <div className="mt-5 space-y-3 pt-4 border-t border-slate-100">
+                <div className="mt-4 space-y-3 pt-3 border-t border-slate-100">
                   <div className="text-xs text-slate-700">
                     <span className="font-mono text-blue-700 uppercase text-[10px] block mb-0.5 font-bold">Solution Delivered:</span>
-                    <p className="line-clamp-3 text-slate-600">{proj.solution}</p>
+                    <p className="line-clamp-2 text-slate-600">{proj.solution}</p>
                   </div>
 
-                  <div className="pt-2">
-                    <span className="font-mono text-slate-400 uppercase text-[10px] block mb-1.5 font-bold">Stack:</span>
+                  <div className="pt-1">
                     <div className="flex flex-wrap gap-1.5">
                       {proj.techStack.slice(0, 4).map((tech, idx) => (
-                        <span key={idx} className="text-[10px] font-mono px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200">
+                        <span key={idx} className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200">
                           {tech}
                         </span>
                       ))}

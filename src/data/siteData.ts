@@ -169,6 +169,9 @@ export interface ProjectItem {
   architectureOverview: string;
   result: string;
   statusBadge: string;
+  image?: string;
+  videoDemo?: string;
+  stats?: { label: string; value: string }[];
 }
 
 export const PROJECTS_DATA: ProjectItem[] = [
@@ -192,7 +195,13 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     architectureOverview: "Edge-rendered Next.js storefront combined with resilient Node.js API services, automated currency hedging cache, and direct luxury concierge webhook bridges.",
     result: "Elevated brand prestige to compete with global luxury home decor houses, driving international buyer trust and increasing custom bespoke rug inquiries.",
-    statusBadge: "Live Production Showcase"
+    statusBadge: "Live Production Showcase",
+    image: "/images/projects/maira-rugs.jpg",
+    stats: [
+      { label: "Image Render Speed", value: "<450ms" },
+      { label: "Global Currencies", value: "14+" },
+      { label: "Bespoke Inquiries", value: "+320%" }
+    ]
   },
   {
     slug: "shubh-life-voice",
@@ -213,7 +222,14 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     architectureOverview: "High-concurrency FastAPI microservice bridging Twilio media streams to Whisper STT, GPT-4o conversational engine, and low-latency ElevenLabs neural TTS.",
     result: "Achieved 94% call resolution rate without human receptionist intervention, dropping patient wait time to zero and eliminating appointment no-shows.",
-    statusBadge: "Active AI Voice Production"
+    statusBadge: "Active AI Voice Production",
+    image: "/images/projects/shubh-voice-ai.jpg",
+    videoDemo: "voice-simulation",
+    stats: [
+      { label: "First Ring Answer", value: "100%" },
+      { label: "Voice Latency", value: "<580ms" },
+      { label: "Call Resolution", value: "94%" }
+    ]
   },
   {
     slug: "ai-cold-caller",
@@ -234,7 +250,14 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     architectureOverview: "Distributed worker architecture coordinating Twilio voice media forks with ultra-low latency Deepgram speech recognition and OpenAI GPT-4o reasoning agents.",
     result: "Scaled outbound prospect contact volume by 800% while cutting cost per qualified lead by 65%.",
-    statusBadge: "Enterprise AI Agent System"
+    statusBadge: "Enterprise AI Agent System",
+    image: "/images/projects/ai-cold-caller.jpg",
+    videoDemo: "outbound-dialer",
+    stats: [
+      { label: "Outbound Scale", value: "+800%" },
+      { label: "Cost Per Lead", value: "-65%" },
+      { label: "Objection Handling", value: "Real-Time" }
+    ]
   },
   {
     slug: "notifyflow",
@@ -254,7 +277,14 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     architectureOverview: "Containerized Docker swarm running n8n workers with Redis message broker and PostgreSQL persistence, handling 50,000+ daily webhook events.",
     result: "Completely eliminated manual invoice dispatch and saved over 35 operational staff hours every week.",
-    statusBadge: "Production Automation Suite"
+    statusBadge: "Production Automation Suite",
+    image: "/images/projects/notifyflow-automation.jpg",
+    videoDemo: "workflow-engine",
+    stats: [
+      { label: "Invoice Dispatch", value: "<1.8s" },
+      { label: "Hours Saved / Wk", value: "35+ hrs" },
+      { label: "Sync Accuracy", value: "99.9%" }
+    ]
   },
   {
     slug: "ideal-path-labs",
@@ -275,7 +305,14 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     architectureOverview: "High-performance Next.js frontend serving dynamic test catalogs with fast search filtering, coupled with instant WhatsApp webhook alerts for lab technicians.",
     result: "Transformed offline manual booking into a streamlined digital workflow with instant test discovery and verified online patient accessibility.",
-    statusBadge: "Live Production Platform"
+    statusBadge: "Live Production Platform",
+    image: "/images/projects/ideal-pathlabs.jpg",
+    videoDemo: "diagnostic-portal",
+    stats: [
+      { label: "Report Delivery", value: "Instant WA" },
+      { label: "Patient Booking", value: "<60s" },
+      { label: "Home Collection", value: "Auto-Assigned" }
+    ]
   },
   {
     slug: "fashiontxt",
@@ -296,13 +333,21 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     architectureOverview: "Static-optimized React client application hosted on global CDN edges for zero latency, featuring responsive media galleries and direct inquiry hooks.",
     result: "Delivered a high-end luxury brand presentation that elevated client inquiries and streamlined digital product showcases.",
-    statusBadge: "Live Production Showcase"
+    statusBadge: "Live Production Showcase",
+    image: "/images/projects/fashiontxt-showcase.jpg",
+    videoDemo: "fashion-lookbook",
+    stats: [
+      { label: "Load Speed", value: "<380ms" },
+      { label: "Mobile Bounce", value: "-45%" },
+      { label: "Inquiries", value: "+210%" }
+    ]
   },
   {
     slug: "swadhub",
     title: "Swadhub",
     subtitle: "Digital Food Business & Multi-Outlet Operational Ecosystem",
     industry: "Food, Dining & Cloud Kitchens",
+    url: "https://swadhub.com/",
     servicesProvided: ["Full-Stack Web Platform", "Order Inquiry System", "Menu Management Engine", "Local SEO & Branding"],
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "PostgreSQL", "WhatsApp API"],
     challenge: "Food enterprises face high aggregator commissions, delayed customer contact, and difficulty managing online menus across multiple local outlets.",
@@ -316,7 +361,14 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     architectureOverview: "Full-stack Next.js web application connected to a cloud database with automated WhatsApp message generation for order details.",
     result: "Enabled direct customer ordering, cutting third-party commission dependence and giving the business ownership over its customer database.",
-    statusBadge: "Verified Business Platform"
+    statusBadge: "Verified Business Platform",
+    image: "/images/projects/swadhub-ordering.jpg",
+    videoDemo: "food-ordering",
+    stats: [
+      { label: "Commission Fee", value: "0%" },
+      { label: "Order Velocity", value: "<2min" },
+      { label: "Table Bookings", value: "+180%" }
+    ]
   }
 ];
 

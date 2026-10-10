@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { ExternalLink, ArrowRight, ShieldCheck } from 'lucide-react';
 import { PROJECTS_DATA } from '@/data/siteData';
+import ProjectMediaCard from '@/components/ProjectMediaCard';
 
 export const metadata: Metadata = {
   title: 'Selected Projects & Case Studies | Real Business Systems',
@@ -27,14 +28,14 @@ export default function ProjectsPage() {
         </div>
 
         {/* Projects Listing in Light Theme */}
-        <div className="space-y-10">
+        <div className="space-y-12">
           {PROJECTS_DATA.map((proj) => (
             <div
               key={proj.slug}
-              className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-md hover:border-blue-400 hover:shadow-xl transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+              className="p-6 sm:p-10 rounded-3xl bg-white border border-slate-200/90 shadow-md hover:border-blue-400 hover:shadow-xl transition-all grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
             >
-              <div className="lg:col-span-7 space-y-4">
-                <div className="flex items-center gap-3">
+              <div className="lg:col-span-7 space-y-5">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   <span className="text-xs font-mono px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-bold">
                     {proj.industry}
                   </span>
@@ -44,10 +45,10 @@ export default function ProjectsPage() {
                   </span>
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
+                <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
                   {proj.title}
                 </h2>
-                <p className="text-sm text-blue-600 font-semibold">
+                <p className="text-sm text-blue-600 font-bold">
                   {proj.subtitle}
                 </p>
 
@@ -55,7 +56,18 @@ export default function ProjectsPage() {
                   {proj.solution}
                 </p>
 
-                <div className="space-y-2 pt-2">
+                {proj.stats && (
+                  <div className="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-slate-50 border border-slate-100 text-center">
+                    {proj.stats.map((s, idx) => (
+                      <div key={idx} className="flex flex-col">
+                        <span className="text-xs sm:text-sm font-black text-slate-900">{s.value}</span>
+                        <span className="text-[9px] font-mono text-slate-500 uppercase">{s.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className="space-y-2 pt-1">
                   <span className="text-xs font-mono text-slate-400 uppercase block font-bold">Engineered Features:</span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {proj.features.slice(0, 4).map((f, i) => (
@@ -76,39 +88,46 @@ export default function ProjectsPage() {
                 </div>
               </div>
 
-              <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-6">
-                <div>
-                  <span className="text-xs font-mono text-blue-700 uppercase tracking-wider block mb-1 font-bold">Architecture Snapshot:</span>
-                  <p className="text-xs text-slate-700 leading-relaxed font-normal">
-                    {proj.architectureOverview}
-                  </p>
+              <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
+                {/* Media Preview Box */}
+                <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+                  <ProjectMediaCard project={proj} variant="card" />
                 </div>
 
-                <div>
-                  <span className="text-xs font-mono text-emerald-700 uppercase tracking-wider block mb-1 font-bold">Delivered Result:</span>
-                  <p className="text-xs text-slate-700 leading-relaxed font-normal">
-                    {proj.result}
-                  </p>
-                </div>
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-4">
+                  <div>
+                    <span className="text-xs font-mono text-blue-700 uppercase tracking-wider block mb-1 font-bold">Architecture Snapshot:</span>
+                    <p className="text-xs text-slate-700 leading-relaxed font-normal">
+                      {proj.architectureOverview}
+                    </p>
+                  </div>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-slate-200">
-                  <Link
-                    href={`/projects/${proj.slug}`}
-                    className="flex-1 py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs uppercase tracking-wider text-center transition-all shadow-md hover:scale-102 active:scale-98"
-                  >
-                    View Deep Case Study →
-                  </Link>
-                  {proj.url && (
-                    <a
-                      href={proj.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-300 transition-colors shadow-2xs"
-                      title="Visit Live Application"
+                  <div>
+                    <span className="text-xs font-mono text-emerald-700 uppercase tracking-wider block mb-1 font-bold">Delivered Result:</span>
+                    <p className="text-xs text-slate-700 leading-relaxed font-normal">
+                      {proj.result}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-3 pt-3 border-t border-slate-200">
+                    <Link
+                      href={`/projects/${proj.slug}`}
+                      className="flex-1 py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs uppercase tracking-wider text-center transition-all shadow-md hover:scale-102 active:scale-98"
                     >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  )}
+                      View Deep Case Study →
+                    </Link>
+                    {proj.url && (
+                      <a
+                        href={proj.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-300 transition-colors shadow-2xs"
+                        title="Visit Live Application"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

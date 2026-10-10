@@ -233,7 +233,7 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center pointer-events-auto ${className}`}
+      className={`relative w-full h-[300px] sm:h-[450px] lg:h-[580px] flex items-center justify-center pointer-events-auto ${className}`}
       aria-label="Interactive 3D AI Digital Core"
     >
       {/* Background radial light glow */}
