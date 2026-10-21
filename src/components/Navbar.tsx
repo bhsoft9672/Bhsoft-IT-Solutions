@@ -95,6 +95,15 @@ export default function Navbar() {
                         </div>
                       </Link>
                     ))}
+                    <div className="pt-2 border-t border-slate-100 px-2.5 pb-1">
+                      <Link
+                        href="/services"
+                        className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center justify-between"
+                      >
+                        <span>Explore All Services</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}
@@ -145,7 +154,16 @@ export default function Navbar() {
         {mobileMenuOpen && (
           <div className="lg:hidden mt-4 pb-6 pt-2 border-t border-slate-200 bg-white/95 backdrop-blur-xl rounded-2xl p-5 shadow-2xl">
             <div className="space-y-3 mb-6">
-              <div className="text-xs font-mono text-blue-600 tracking-wider uppercase mb-2 font-bold">Services</div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-mono text-blue-600 tracking-wider uppercase font-bold">Services</span>
+                <Link
+                  href="/services"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-xs font-semibold text-blue-600 hover:underline"
+                >
+                  All Services →
+                </Link>
+              </div>
               <div className="grid grid-cols-1 gap-2 pl-2 border-l-2 border-blue-100">
                 {SERVICES_DATA.map((srv) => (
                   <Link

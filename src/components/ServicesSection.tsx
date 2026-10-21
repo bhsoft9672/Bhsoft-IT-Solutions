@@ -14,7 +14,11 @@ import {
   X, 
   CheckCircle2, 
   Sparkles,
-  Layers
+  Layers,
+  PhoneCall,
+  MessageSquare,
+  ShoppingCart,
+  Search
 } from 'lucide-react';
 import { SERVICES_DATA, ServiceItem } from '@/data/siteData';
 
@@ -25,17 +29,24 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Smartphone,
   Cpu,
   Network,
-  Users
+  Users,
+  PhoneCall,
+  MessageSquare,
+  ShoppingCart,
+  Search
 };
 
 const SERVICE_IMAGE_MAP: Record<string, { image: string; tag: string }> = {
-  'ai-agents': { image: '/images/projects/shubh-voice-ai.jpg', tag: 'AI Voice Calling & Telephony' },
-  'automation': { image: '/images/projects/notifyflow-automation.jpg', tag: 'n8n Webhook Pipeline' },
-  'web-dev': { image: '/images/projects/maira-rugs.jpg', tag: 'Luxury 3D & E-Commerce' },
-  'mobile-apps': { image: '/images/projects/fashiontxt-showcase.jpg', tag: 'Cross-Platform Mobile Apps' },
-  'custom-software': { image: '/images/projects/ai-cold-caller.jpg', tag: 'Custom SaaS & Cloud Systems' },
-  'api-integration': { image: '/images/projects/swadhub-ordering.jpg', tag: 'WhatsApp Cloud & POS APIs' },
-  'crm': { image: '/images/projects/ideal-pathlabs.jpg', tag: 'Lead Funnel & Diagnostics' }
+  'ai-agents': { image: '/images/projects/shubh-voice-ai.jpg', tag: 'AI Agent & LLM Chatbots' },
+  'voice-ai-agents': { image: '/images/projects/ai-cold-caller.jpg', tag: 'AI Voice Calling Telephony' },
+  'automation': { image: '/images/projects/notifyflow-automation.jpg', tag: 'n8n Business Workflows' },
+  'whatsapp-automation': { image: '/images/projects/ideal-pathlabs.jpg', tag: 'WhatsApp Cloud API' },
+  'web-development': { image: '/images/projects/maira-rugs.jpg', tag: 'Next.js Web Platforms' },
+  'ecommerce-website-development': { image: '/images/projects/maira-detail.jpg', tag: 'Custom E-Commerce Stores' },
+  'app-development': { image: '/images/projects/fashiontxt-showcase.jpg', tag: 'iOS & Android Native Apps' },
+  'custom-software': { image: '/images/projects/ai-cold-caller.jpg', tag: 'Custom SaaS & Cloud ERP' },
+  'crm': { image: '/images/projects/swadhub-ordering.jpg', tag: 'Lead Funnel & CRM Engine' },
+  'seo-services': { image: '/images/projects/ideal-pathlabs.jpg', tag: 'Technical SEO & Rankings' }
 };
 
 export default function ServicesSection() {

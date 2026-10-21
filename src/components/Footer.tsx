@@ -73,13 +73,21 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li className="pt-1">
+                <Link
+                  href="/services"
+                  className="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-1 text-xs"
+                >
+                  View All Services →
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Company & Solutions Column */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono tracking-widest text-blue-700 uppercase font-bold">
-              Company
+              Company & Legal
             </h4>
             <ul className="space-y-2 text-sm text-slate-600 font-medium">
               <li>
@@ -96,6 +104,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/#faqs" className="hover:text-blue-600 transition-colors">Knowledge Base (FAQ)</Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy" className="hover:text-blue-600 transition-colors">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link href="/terms-and-conditions" className="hover:text-blue-600 transition-colors">Terms & Conditions</Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-blue-600 transition-colors">Book Consultation</Link>
@@ -134,8 +148,11 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div>
-            © 2026 {SITE_CONFIG.companyName}. All rights reserved.
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <span>© 2026 {SITE_CONFIG.companyName}. All rights reserved.</span>
+            <Link href="/privacy-policy" className="hover:text-blue-600 transition-colors underline">Privacy Policy</Link>
+            <Link href="/terms-and-conditions" className="hover:text-blue-600 transition-colors underline">Terms</Link>
+            <Link href="/sitemap.xml" className="hover:text-blue-600 transition-colors">Sitemap</Link>
           </div>
           <div className="flex items-center gap-6">
             <span>Built with Next.js, Three.js & AI Systems</span>

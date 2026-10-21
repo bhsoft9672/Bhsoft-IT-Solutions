@@ -13,11 +13,17 @@ import {
   ChevronLeft, 
   CheckCircle2, 
   Sparkles, 
-  MessageSquare 
+  MessageSquare,
+  PhoneCall,
+  ShoppingCart,
+  Search,
+  ChevronRight,
+  HelpCircle
 } from 'lucide-react';
 import { SERVICES_DATA } from '@/data/siteData';
 import { SITE_CONFIG } from '@/data/siteConfig';
 import FinalCtaSection from '@/components/FinalCtaSection';
+import JsonLd from '@/components/JsonLd';
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Bot,
@@ -26,7 +32,11 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Smartphone,
   Cpu,
   Network,
-  Users
+  Users,
+  PhoneCall,
+  MessageSquare,
+  ShoppingCart,
+  Search
 };
 
 interface Props {
@@ -45,8 +55,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!service) return { title: 'Service Not Found' };
 
   return {
-    title: `${service.title} | BHSOFT IT SOLUTION Architecture`,
-    description: service.tagline
+    title: `${service.title} Services | BHSOFT IT SOLUTION India`,
+    description: `${service.tagline} Engineered by BHSOFT IT SOLUTION for businesses in Jaipur, India & worldwide.`,
+    alternates: {
+      canonical: `/services/${service.id}`,
+    },
+    openGraph: {
+      title: `${service.title} Services | BHSOFT IT SOLUTION`,
+      description: service.tagline,
+      url: `${SITE_CONFIG.siteUrl}/services/${service.id}`,
+      siteName: SITE_CONFIG.companyName,
+      locale: 'en_IN',
+      type: 'website',
+      images: [{ url: '/bhsoft-logo.png', width: 1200, height: 630, alt: service.title }]
+    }
   };
 }
 
@@ -62,19 +84,76 @@ export default async function ServiceDetailPage({ params }: Props) {
   const relatedServices = SERVICES_DATA.filter((s) => s.id !== service.id).slice(0, 3);
   const whatsappUrl = `https://wa.me/${SITE_CONFIG.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hi BHSOFT, I want to discuss ${service.title} for our workflow.`)}`;
 
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${SITE_CONFIG.siteUrl}/services/${service.id}/#service`,
+    name: service.title,
+    serviceType: service.title,
+    provider: {
+      '@type': 'Organization',
+      name: SITE_CONFIG.companyName,
+      url: SITE_CONFIG.siteUrl,
+      logo: `${SITE_CONFIG.siteUrl}/bhsoft-logo.png`,
+      telephone: SITE_CONFIG.phone,
+      email: SITE_CONFIG.email
+    },
+    description: service.tagline,
+    areaServed: ['India', 'Rajasthan', 'Jaipur', 'Global'],
+    url: `${SITE_CONFIG.siteUrl}/services/${service.id}`
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_CONFIG.siteUrl
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Services',
+        item: `${SITE_CONFIG.siteUrl}/services`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: service.title,
+        item: `${SITE_CONFIG.siteUrl}/services/${service.id}`
+      }
+    ]
+  };
+
   return (
     <main className="min-h-screen pt-28 pb-16 bg-slate-50/50">
+      <JsonLd data={serviceSchema} />
+      <JsonLd data={breadcrumbSchema} />
+
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back Link */}
-        <div className="mb-8">
-          <Link
-            href="/#services"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-blue-600 hover:text-blue-800 transition-colors"
-          >
-            <ChevronLeft className="w-4 h-4" />
-            <span>Back to All Services</span>
-          </Link>
-        </div>
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="mb-8">
+          <ol className="flex items-center gap-2 text-xs font-mono text-slate-500">
+            <li>
+              <Link href="/" className="hover:text-blue-600 transition-colors">
+                Home
+              </Link>
+            </li>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <li>
+              <Link href="/services" className="hover:text-blue-600 transition-colors">
+                Services
+              </Link>
+            </li>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <li className="text-slate-900 font-bold" aria-current="page">
+              {service.title}
+            </li>
+          </ol>
+        </nav>
 
         {/* Hero Banner in Light Theme */}
         <div className="p-8 sm:p-12 rounded-3xl bg-white border border-slate-200/90 relative overflow-hidden shadow-xl mb-12">

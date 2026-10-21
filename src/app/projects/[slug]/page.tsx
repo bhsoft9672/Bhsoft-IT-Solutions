@@ -2,9 +2,11 @@ import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ExternalLink, ArrowRight, ShieldCheck, CheckCircle2, ChevronLeft } from 'lucide-react';
+import { ExternalLink, ArrowRight, ShieldCheck, CheckCircle2, ChevronRight } from 'lucide-react';
 import { PROJECTS_DATA } from '@/data/siteData';
+import { SITE_CONFIG } from '@/data/siteConfig';
 import ProjectMediaCard from '@/components/ProjectMediaCard';
+import JsonLd from '@/components/JsonLd';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -22,8 +24,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return { title: 'Project Not Found' };
 
   return {
-    title: `${project.title} Case Study | BHSOFT Production Platform`,
-    description: `Detailed case study on how BHSOFT engineered ${project.title} (${project.subtitle}) to overcome operational bottlenecks.`
+    title: `${project.title} Case Study | ${project.subtitle} | BHSOFT`,
+    description: `Case study on how BHSOFT engineered ${project.title} (${project.subtitle}): technical challenge, architecture, and delivered business results.`,
+    alternates: {
+      canonical: `/projects/${project.slug}`,
+    },
+    openGraph: {
+      title: `${project.title} Case Study | BHSOFT IT SOLUTION`,
+      description: project.subtitle,
+      url: `${SITE_CONFIG.siteUrl}/projects/${project.slug}`,
+      siteName: SITE_CONFIG.companyName,
+      locale: 'en_IN',
+      type: 'article',
+      images: [
+        {
+          url: project.image || '/bhsoft-logo.png',
+          width: 1200,
+          height: 630,
+          alt: `${project.title} - ${project.subtitle}`
+        }
+      ]
+    }
   };
 }
 
@@ -35,19 +56,80 @@ export default async function ProjectDetailPage({ params }: Props) {
     notFound();
   }
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_CONFIG.siteUrl
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Projects',
+        item: `${SITE_CONFIG.siteUrl}/projects`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: project.title,
+        item: `${SITE_CONFIG.siteUrl}/projects/${project.slug}`
+      }
+    ]
+  };
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    '@id': `${SITE_CONFIG.siteUrl}/projects/${project.slug}/#article`,
+    headline: `${project.title} Case Study: ${project.subtitle}`,
+    description: project.solution,
+    image: project.image ? `${SITE_CONFIG.siteUrl}${project.image}` : `${SITE_CONFIG.siteUrl}/bhsoft-logo.png`,
+    author: {
+      '@type': 'Organization',
+      name: SITE_CONFIG.companyName,
+      url: SITE_CONFIG.siteUrl
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_CONFIG.companyName,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_CONFIG.siteUrl}/bhsoft-logo.png`
+      }
+    },
+    mainEntityOfPage: `${SITE_CONFIG.siteUrl}/projects/${project.slug}`
+  };
+
   return (
     <main className="min-h-screen pt-28 pb-16 bg-slate-50/50">
+      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={articleSchema} />
+
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb Back */}
-        <div className="mb-8">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-blue-600 hover:text-blue-800 transition-colors"
-          >
-            <ChevronLeft className="w-4 h-4" />
-            <span>Back to All Projects</span>
-          </Link>
-        </div>
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="mb-8">
+          <ol className="flex items-center gap-2 text-xs font-mono text-slate-500">
+            <li>
+              <Link href="/" className="hover:text-blue-600 transition-colors">
+                Home
+              </Link>
+            </li>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <li>
+              <Link href="/projects" className="hover:text-blue-600 transition-colors">
+                Projects
+              </Link>
+            </li>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <li className="text-slate-900 font-bold" aria-current="page">
+              {project.title}
+            </li>
+          </ol>
+        </nav>
 
         {/* Hero Banner in Light Theme */}
         <div className="p-8 sm:p-12 rounded-3xl bg-white border border-slate-200/90 relative overflow-hidden shadow-xl mb-12">

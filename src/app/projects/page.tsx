@@ -1,19 +1,69 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ExternalLink, ArrowRight, ShieldCheck } from 'lucide-react';
+import { ExternalLink, ArrowRight, ShieldCheck, ChevronRight } from 'lucide-react';
 import { PROJECTS_DATA } from '@/data/siteData';
+import { SITE_CONFIG } from '@/data/siteConfig';
 import ProjectMediaCard from '@/components/ProjectMediaCard';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Selected Projects & Case Studies | Real Business Systems',
-  description: 'Explore verified production platforms engineered by BHSOFT IT SOLUTION, including Maira Rugs, Shubh Life Clinic Voice AI, AI Cold Caller, Ideal Path Labs, FashionTXT, and Swadhub.'
+  title: 'Client Case Studies & Verified Projects | BHSOFT IT SOLUTION',
+  description: 'Explore verified client platforms engineered by BHSOFT IT SOLUTION: Maira Rugs luxury e-commerce, Shubh Life Clinic Voice AI, AI Cold Caller, Ideal Path Labs, FashionTXT, and Swadhub.',
+  alternates: {
+    canonical: '/projects',
+  },
+  openGraph: {
+    title: 'Client Case Studies & Software Engineering Portfolio | BHSOFT IT SOLUTION',
+    description: 'Real-world production case studies in AI voice telephony, n8n automations, Next.js web applications, and medical diagnostic platforms.',
+    url: `${SITE_CONFIG.siteUrl}/projects`,
+    siteName: SITE_CONFIG.companyName,
+    locale: 'en_IN',
+    type: 'website',
+    images: [{ url: '/bhsoft-logo.png', width: 1200, height: 630, alt: 'BHSOFT Case Studies' }]
+  }
 };
 
 export default function ProjectsPage() {
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_CONFIG.siteUrl
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Projects',
+        item: `${SITE_CONFIG.siteUrl}/projects`
+      }
+    ]
+  };
+
   return (
     <main className="min-h-screen pt-28 pb-16 bg-slate-50/50">
+      <JsonLd data={breadcrumbSchema} />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="mb-8">
+          <ol className="flex items-center gap-2 text-xs font-mono text-slate-500">
+            <li>
+              <Link href="/" className="hover:text-blue-600 transition-colors">
+                Home
+              </Link>
+            </li>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <li className="text-slate-900 font-bold" aria-current="page">
+              Projects &amp; Case Studies
+            </li>
+          </ol>
+        </nav>
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono uppercase tracking-wider mb-4 font-bold shadow-xs">

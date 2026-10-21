@@ -16,28 +16,48 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "ai-agents",
     number: "01",
-    title: "AI AGENTS",
-    tagline: "Autonomous intelligent agents engineered to execute tasks 24/7 without manual intervention.",
+    title: "AI AGENTS & CHATBOTS",
+    tagline: "Autonomous intelligent conversational agents engineered to execute tasks 24/7 across web, WhatsApp, and internal systems.",
     problem: "Businesses lose 40%+ of potential leads because inquiries outside business hours go unanswered and manual follow-ups take hours or days.",
-    solution: "We build multi-modal AI agents trained on your business knowledge base that converse naturally via WhatsApp, Web, and Voice, qualify leads instantly, and close appointments straight into your calendar.",
+    solution: "We build multi-modal AI agents trained on your business knowledge base that converse naturally, qualify leads instantly, answer complex customer queries, and close appointments straight into your calendar.",
     features: [
-      "Natural multilingual conversation handling",
-      "WhatsApp & omnichannel live chat integration",
-      "Autonomous Voice Calling & Appointment Booking",
+      "Natural multilingual conversation handling (English, Hindi, Arabic, Spanish)",
+      "WhatsApp Cloud API & website live chat integration",
       "Dynamic lead scoring & automatic qualification",
       "Instant 2-way CRM synchronization",
+      "Knowledge retrieval using vector embeddings & RAG",
       "Escalation handover to human agents when needed"
     ],
-    technologies: ["OpenAI GPT-4o", "Claude 3.5 Sonnet", "Twilio Voice API", "Whisper STT", "ElevenLabs", "LangChain", "n8n"],
+    technologies: ["OpenAI GPT-4o", "Claude 3.5 Sonnet", "LangChain", "Pinecone", "Meta WhatsApp API", "Node.js", "PostgreSQL"],
     impact: "Reduces first-response time from 4 hours to under 3 seconds with up to 90% routine task resolution.",
     ctaText: "Explore AI Agents →",
     iconName: "Bot"
   },
   {
-    id: "automation",
+    id: "voice-ai-agents",
     number: "02",
-    title: "BUSINESS AUTOMATION",
-    tagline: "End-to-end orchestration of repetitive business operations and cross-tool workflows.",
+    title: "AI VOICE CALLING AGENTS",
+    tagline: "Ultra-low latency autonomous voice bots that handle inbound phone calls and high-volume outbound dialing.",
+    problem: "Receptionists miss customer calls during peak hours, and sales reps spend 70% of their day manually dialing cold prospects with low connect rates.",
+    solution: "We architect sub-600ms latency voice agents that answer on the first ring, understand accents, check doctor or team availability, book calendar meetings, and execute outbound qualification calls.",
+    features: [
+      "Sub-600ms voice response latency using neural streaming",
+      "Twilio SIP trunking & private VoIP integration",
+      "Dynamic objection handling trained on custom battlecards",
+      "Real-time call transcription & sentiment tagging",
+      "Automated calendar slot locking & WhatsApp confirmation",
+      "Warm call transfer to human officers for emergencies"
+    ],
+    technologies: ["Twilio Voice API", "Whisper STT", "GPT-4o Realtime", "ElevenLabs Neural TTS", "FastAPI Python", "Redis", "WebSockets"],
+    impact: "Resolves 94% of inbound calls autonomously and scales outbound sales outreach by up to 800%.",
+    ctaText: "Deploy Voice AI Agent →",
+    iconName: "PhoneCall"
+  },
+  {
+    id: "automation",
+    number: "03",
+    title: "BUSINESS WORKFLOW AUTOMATION",
+    tagline: "End-to-end orchestration of repetitive business operations and cross-tool workflows using n8n and webhooks.",
     problem: "Operational bottlenecks, slow manual data entry between spreadsheets and CRMs, delayed invoicing, and missed follow-ups cost dozens of team hours weekly.",
     solution: "We map your operational workflows and construct enterprise automation engines that synchronize systems, trigger automated client touchpoints, and eliminate manual copy-pasting.",
     features: [
@@ -54,10 +74,30 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: "Workflow"
   },
   {
+    id: "whatsapp-automation",
+    number: "04",
+    title: "WHATSAPP AUTOMATION & CHATBOTS",
+    tagline: "Official Meta WhatsApp Business Cloud API integration for automated order receipts, appointment reminders, and lead nurturing.",
+    problem: "Customers expect immediate responses on WhatsApp, but manually chatting with hundreds of leads leads to delayed replies and lost revenue.",
+    solution: "We connect the official Meta WhatsApp Cloud API directly into your backend, delivering automated PDF invoices, dynamic order tracking, interactive button menus, and AI-driven conversational checkout.",
+    features: [
+      "Official Meta WhatsApp Cloud API verified setup",
+      "Interactive button catalogs, list menus, and rich media cards",
+      "Automated invoice PDF generation & instant dispatch",
+      "Behavioral drip follow-ups & re-engagement sequences",
+      "Live agent multi-inbox handover dashboard",
+      "Green tick verification assistance and compliance"
+    ],
+    technologies: ["Meta WhatsApp Cloud API", "Node.js", "n8n", "PostgreSQL", "AWS Lambda", "Redis Queues"],
+    impact: "Achieves 98% open rates and 45%+ response rates compared to traditional email campaigns.",
+    ctaText: "Automate WhatsApp →",
+    iconName: "MessageSquare"
+  },
+  {
     id: "web-development",
-    number: "03",
+    number: "05",
     title: "WEBSITE DEVELOPMENT",
-    tagline: "Ultra-fast, high-converting digital storefronts and SaaS web platforms.",
+    tagline: "Ultra-fast, high-converting digital storefronts and SaaS web platforms engineered with Next.js.",
     problem: "Generic templates and sluggish websites create high bounce rates, zero visitor trust, and dismal conversion numbers.",
     solution: "We engineer bespoke, lightning-fast web applications using Next.js and modern component architecture with built-in analytics, SEO structure, and conversion funnels.",
     features: [
@@ -68,16 +108,36 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Headless CMS integration for effortless client editing",
       "Comprehensive Technical & Local SEO schema"
     ],
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Three.js", "Framer Motion", "Vercel / Cloudflare"],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Three.js", "Vercel / Cloudflare"],
     impact: "Boosts average conversion rates by 2.5x with superior trust-building UX and sub-second page performance.",
     ctaText: "Build My Website →",
     iconName: "Globe"
   },
   {
+    id: "ecommerce-website-development",
+    number: "06",
+    title: "E-COMMERCE WEB PLATFORMS",
+    tagline: "Scalable custom online stores with interactive 3D product visualizers, multi-currency checkout, and ERP inventory sync.",
+    problem: "High drop-off rates on standard templates, slow image loading on heavy catalogs, and lack of differentiation for luxury or custom products.",
+    solution: "We architect high-performance e-commerce experiences (like Maira Rugs) featuring custom dimension visualizers, multi-currency geo-hedging, sub-second product pages, and automated WhatsApp order alerts.",
+    features: [
+      "Custom product configurators & 3D dimension visualizers",
+      "Sub-second catalog browsing with edge-cached images",
+      "Multi-currency conversion with automatic geo-detection",
+      "Global payment gateways (Stripe, Razorpay, Cashfree, PayPal)",
+      "Automated inventory sync & ERP fulfillment webhooks",
+      "VIP Concierge WhatsApp gateway for private sales"
+    ],
+    technologies: ["Next.js", "React", "Tailwind CSS", "Node.js", "PostgreSQL", "Stripe Global", "Cloudflare CDN"],
+    impact: "Drives 300%+ increase in high-ticket buyer inquiries and reduces cart abandonment significantly.",
+    ctaText: "Build E-Commerce Platform →",
+    iconName: "ShoppingCart"
+  },
+  {
     id: "app-development",
-    number: "04",
+    number: "07",
     title: "MOBILE APP DEVELOPMENT",
-    tagline: "Production-grade iOS and Android mobile experiences crafted for scalable engagement.",
+    tagline: "Production-grade iOS and Android mobile experiences crafted for scalable engagement and frictionless customer access.",
     problem: "Off-the-shelf app templates fail under real user scale, suffer from sluggish native performance, and frustrate customers.",
     solution: "We design and engineer fluid cross-platform and native mobile apps with offline persistence, real-time push engines, and frictionless checkout flows.",
     features: [
@@ -95,9 +155,9 @@ export const SERVICES_DATA: ServiceItem[] = [
   },
   {
     id: "custom-software",
-    number: "05",
-    title: "CUSTOM SOFTWARE",
-    tagline: "Bespoke SaaS platforms, internal ERPs, and custom admin control centers.",
+    number: "08",
+    title: "CUSTOM SOFTWARE & SAAS",
+    tagline: "Bespoke SaaS platforms, internal ERPs, and custom admin control centers built around your proprietary operations.",
     problem: "SaaS subscriptions with rigid features force businesses to adapt their workflows to the software instead of the software serving their operations.",
     solution: "We architect tailor-made web applications, enterprise dashboards, and workflow management systems built strictly around your company's proprietary operational model.",
     features: [
@@ -114,30 +174,10 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: "Cpu"
   },
   {
-    id: "api-integration",
-    number: "06",
-    title: "AI + AUTOMATION INTEGRATION",
-    tagline: "Seamlessly connecting your existing enterprise tools into one intelligent ecosystem.",
-    problem: "Siloed software stacks where the CRM does not talk to accounting, and WhatsApp conversations are isolated from customer databases.",
-    solution: "We construct reliable bidirectional API pipelines, webhook middleware, and AI transformation layers that turn disconnected tools into a unified operating system.",
-    features: [
-      "OpenAI & Claude LLM integration into existing workflows",
-      "Official WhatsApp Business API integration",
-      "CRM bi-directional sync (HubSpot, Zoho, Salesforce)",
-      "Payment gateway & accounting webhooks (Stripe, Razorpay, QuickBooks)",
-      "Secure API middleware with rate limiting & retry queues",
-      "Custom RESTful and GraphQL endpoints"
-    ],
-    technologies: ["OpenAI API", "Meta WhatsApp API", "n8n", "Twilio", "REST / Webhooks", "MongoDB", "PostgreSQL"],
-    impact: "Eliminates duplicate data entry across departments and ensures real-time operational visibility.",
-    ctaText: "Automate My Workflow →",
-    iconName: "Network"
-  },
-  {
     id: "crm",
-    number: "07",
+    number: "09",
     title: "CRM & LEAD PIPELINE SYSTEMS",
-    tagline: "Custom sales engines designed to capture, track, and convert high-value leads automatically.",
+    tagline: "Custom sales engines designed to capture, track, score, and convert high-value leads automatically.",
     problem: "Leads slip through the cracks, sales reps fail to follow up consistently, and management lacks visibility into conversion bottlenecks.",
     solution: "We configure custom CRM architectures with automated stage progression, instant lead dispatch, and AI-assisted qualification summaries.",
     features: [
@@ -152,6 +192,26 @@ export const SERVICES_DATA: ServiceItem[] = [
     impact: "Shortens sales cycle duration by 40% and ensures zero leads are ever abandoned.",
     ctaText: "Build CRM Engine →",
     iconName: "Users"
+  },
+  {
+    id: "seo-services",
+    number: "10",
+    title: "TECHNICAL SEO & DIGITAL GROWTH",
+    tagline: "Search engine dominance engineering: Technical SEO audits, local Jaipur & pan-India ranking, Core Web Vitals, and structured data.",
+    problem: "Websites fail to generate organic leads because they lack proper crawlability, semantic schema, fast mobile performance, and keyword-targeted architecture.",
+    solution: "We engineer deep technical SEO into your digital assets: sub-second Core Web Vitals, JSON-LD rich snippet schema, crawlable semantic HTML, localized Jaipur and national targeting, and high-converting landing pages.",
+    features: [
+      "Technical SEO audits & Core Web Vitals 95+ score optimization",
+      "Comprehensive JSON-LD Schema markup (Organization, LocalBusiness, Breadcrumbs, Service)",
+      "Local SEO dominance (Jaipur, Rajasthan, and pan-India service areas)",
+      "High-intent keyword architecture & landing page creation",
+      "XML Sitemap & automated Robots.txt indexing configuration",
+      "Conversion Rate Optimization (CRO) & lead attribution tracking"
+    ],
+    technologies: ["Next.js Metadata API", "Schema.org", "Google Search Console", "Google Analytics 4", "Lighthouse", "Core Web Vitals"],
+    impact: "Establishes long-term organic discovery and high-intent inbound client inquiries without expensive ads.",
+    ctaText: "Dominate Search Rankings →",
+    iconName: "Search"
   }
 ];
 
