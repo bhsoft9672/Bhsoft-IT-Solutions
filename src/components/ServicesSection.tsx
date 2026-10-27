@@ -37,16 +37,16 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 const SERVICE_IMAGE_MAP: Record<string, { image: string; tag: string }> = {
-  'ai-agents': { image: '/images/projects/shubh-voice-ai.jpg', tag: 'AI Agent & LLM Chatbots' },
-  'voice-ai-agents': { image: '/images/projects/ai-cold-caller.jpg', tag: 'AI Voice Calling Telephony' },
-  'automation': { image: '/images/projects/notifyflow-automation.jpg', tag: 'n8n Business Workflows' },
-  'whatsapp-automation': { image: '/images/projects/ideal-pathlabs.jpg', tag: 'WhatsApp Cloud API' },
-  'web-development': { image: '/images/projects/maira-rugs.jpg', tag: 'Next.js Web Platforms' },
-  'ecommerce-website-development': { image: '/images/projects/maira-detail.jpg', tag: 'Custom E-Commerce Stores' },
-  'app-development': { image: '/images/projects/fashiontxt-showcase.jpg', tag: 'iOS & Android Native Apps' },
-  'custom-software': { image: '/images/projects/ai-cold-caller.jpg', tag: 'Custom SaaS & Cloud ERP' },
-  'crm': { image: '/images/projects/swadhub-ordering.jpg', tag: 'Lead Funnel & CRM Engine' },
-  'seo-services': { image: '/images/projects/ideal-pathlabs.jpg', tag: 'Technical SEO & Rankings' }
+  'ai-agents': { image: '/images/projects/shubh-voice-ai.webp', tag: 'AI Agent & LLM Chatbots' },
+  'voice-ai-agents': { image: '/images/projects/ai-cold-caller.webp', tag: 'AI Voice Calling Telephony' },
+  'automation': { image: '/images/projects/notifyflow-automation.webp', tag: 'n8n Business Workflows' },
+  'whatsapp-automation': { image: '/images/projects/ideal-pathlabs.webp', tag: 'WhatsApp Cloud API' },
+  'web-development': { image: '/images/projects/maira-rugs.webp', tag: 'Next.js Web Platforms' },
+  'ecommerce-website-development': { image: '/images/projects/maira-detail.webp', tag: 'Custom E-Commerce Stores' },
+  'app-development': { image: '/images/projects/fashiontxt-showcase.webp', tag: 'iOS & Android Native Apps' },
+  'custom-software': { image: '/images/projects/ai-cold-caller.webp', tag: 'Custom SaaS & Cloud ERP' },
+  'crm': { image: '/images/projects/swadhub-ordering.webp', tag: 'Lead Funnel & CRM Engine' },
+  'seo-services': { image: '/images/projects/ideal-pathlabs.webp', tag: 'Technical SEO & Rankings' }
 };
 
 export default function ServicesSection() {
@@ -113,6 +113,10 @@ export default function ServicesSection() {
                       <img
                         src={media.image}
                         alt={service.title}
+                        width={380}
+                        height={144}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
@@ -159,7 +163,8 @@ export default function ServicesSection() {
 
                   <Link
                     href={`/services/${service.id}`}
-                    className="text-xs font-bold text-slate-500 hover:text-blue-600 transition-colors"
+                    aria-label={`Deep dive into ${service.title} engineering services`}
+                    className="text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors"
                   >
                     Deep Dive →
                   </Link>

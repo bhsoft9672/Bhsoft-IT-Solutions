@@ -39,7 +39,7 @@ const DEMO_TABS: VideoDemoTab[] = [
     badge: 'Autonomous Telephony Engine',
     title: 'Shubh Life Clinic Multi-Lingual Voice Agent',
     subtitle: 'Human-like voice agent answering patient calls in <600ms, checking doctor schedules, and dispatching WhatsApp confirmations.',
-    image: '/images/projects/shubh-voice-ai.jpg',
+    image: '/images/projects/shubh-voice-ai.webp',
     category: 'Healthcare & Voice AI',
     client: 'Shubh Life Clinic',
     projectSlug: 'shubh-life-voice',
@@ -55,7 +55,7 @@ const DEMO_TABS: VideoDemoTab[] = [
     badge: 'Enterprise Outbound Dialer',
     title: 'Autonomous Outbound Sales & Lead Qualification Machine',
     subtitle: 'High-velocity predictive dialer holding natural context-aware conversations, addressing objections, and booking AE calendar demos.',
-    image: '/images/projects/ai-cold-caller.jpg',
+    image: '/images/projects/ai-cold-caller.webp',
     category: 'B2B Sales Automation',
     client: 'Enterprise Sales Teams',
     projectSlug: 'ai-cold-caller',
@@ -71,7 +71,7 @@ const DEMO_TABS: VideoDemoTab[] = [
     badge: 'Event-Driven Pipeline',
     title: 'NotifyFlow Omnichannel Business Process Orchestrator',
     subtitle: 'Self-hosted Docker n8n worker processing 50,000+ daily webhooks across Stripe, WhatsApp, CRM, and auto-invoicing in <1.8s.',
-    image: '/images/projects/notifyflow-automation.jpg',
+    image: '/images/projects/notifyflow-automation.webp',
     category: 'Enterprise Operations',
     client: 'E-Commerce & SaaS Clients',
     projectSlug: 'notifyflow',
@@ -87,7 +87,7 @@ const DEMO_TABS: VideoDemoTab[] = [
     badge: 'Bespoke Retail Platform',
     title: 'Maira Rugs Global Storefront & Tactile Visualizer',
     subtitle: 'Ultra-luxury dark aesthetic e-commerce with custom rug dimension calculators, weave tactile zoom, and VIP WhatsApp concierge.',
-    image: '/images/projects/maira-rugs.jpg',
+    image: '/images/projects/maira-rugs.webp',
     category: 'Luxury E-Commerce',
     client: 'Maira Rugs (mairarug.com)',
     projectSlug: 'mairarug-com',
@@ -103,7 +103,7 @@ const DEMO_TABS: VideoDemoTab[] = [
     badge: 'Healthcare Portal',
     title: 'Ideal Path Labs Automated Report & Booking Hub',
     subtitle: 'Full-stack Next.js pathology catalog with instant home sample collection routing and automated PDF diagnostic report delivery.',
-    image: '/images/projects/ideal-pathlabs.jpg',
+    image: '/images/projects/ideal-pathlabs.webp',
     category: 'Diagnostics & Telehealth',
     client: 'Ideal Path Labs (idealpathlabs.com)',
     projectSlug: 'ideal-path-labs',
@@ -244,6 +244,10 @@ export default function AiVideoShowcaseSection() {
                 <img
                   src={activeDemo.image}
                   alt={activeDemo.title}
+                  width={900}
+                  height={500}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-slate-950/30" />
@@ -294,13 +298,13 @@ export default function AiVideoShowcaseSection() {
                       </div>
 
                       {/* Giant dancing waveform */}
-                      <div className="flex items-center justify-center gap-1.5 sm:gap-2.5 py-6">
+                      <div className="flex items-center justify-center gap-1.5 sm:gap-2.5 py-6 h-24">
                         {[20, 45, 80, 35, 95, 60, 85, 30, 100, 75, 40, 90, 50, 85, 65, 30, 90, 45, 75, 35, 80, 40].map((h, i) => (
                           <span
                             key={i}
-                            className="w-1.5 sm:w-2 bg-gradient-to-t from-blue-600 via-cyan-400 to-indigo-300 rounded-full transition-all duration-300"
+                            className="w-1.5 sm:w-2 h-20 bg-gradient-to-t from-blue-600 via-cyan-400 to-indigo-300 rounded-full transition-transform duration-300 origin-bottom"
                             style={{
-                              height: isPlaying ? `${Math.max(8, h * (0.35 + (simStep % 3) * 0.25))}px` : '10px',
+                              transform: isPlaying ? `scaleY(${Math.max(0.1, (h / 100) * (0.35 + (simStep % 3) * 0.25))})` : 'scaleY(0.12)',
                               opacity: isPlaying ? 1 : 0.4
                             }}
                           />
@@ -351,12 +355,12 @@ export default function AiVideoShowcaseSection() {
                       </div>
 
                       {/* Sound Wave */}
-                      <div className="flex items-center justify-center gap-2 py-2">
+                      <div className="flex items-center justify-center gap-2 py-2 h-10">
                         {[30, 60, 90, 40, 80, 50, 70, 30, 85, 45, 95, 60, 40].map((h, i) => (
                           <span
                             key={i}
-                            className="w-1.5 bg-cyan-400 rounded-full animate-pulse"
-                            style={{ height: `${h * 0.4}px`, animationDelay: `${i * 0.1}s` }}
+                            className="w-1.5 h-10 bg-cyan-400 rounded-full animate-pulse origin-bottom"
+                            style={{ transform: `scaleY(${Math.max(0.15, (h * 0.4) / 40)})`, animationDelay: `${i * 0.1}s` }}
                           />
                         ))}
                       </div>
@@ -501,8 +505,8 @@ export default function AiVideoShowcaseSection() {
               <div className="flex-1 mx-2 sm:mx-4">
                 <div className="w-full bg-white/20 h-2 rounded-full overflow-hidden cursor-pointer">
                   <div
-                    className="bg-gradient-to-r from-blue-500 via-cyan-400 to-indigo-400 h-full rounded-full transition-all duration-300"
-                    style={{ width: `${(timelineSec / 60) * 100}%` }}
+                    className="bg-gradient-to-r from-blue-500 via-cyan-400 to-indigo-400 h-full w-full rounded-full transition-transform duration-300 origin-left"
+                    style={{ transform: `scaleX(${timelineSec / 60})` }}
                   />
                 </div>
               </div>

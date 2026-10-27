@@ -199,11 +199,24 @@ export default function Interactive3DTechMatrix() {
     };
     window.addEventListener('resize', handleResize);
 
-    // Animation Loop
+    // Animation Loop with Intersection Observer to pause when offscreen
+    let isVisible = true;
     let animId: number;
     let clock = 0;
 
+    const observer = new IntersectionObserver(([entry]) => {
+      const wasVisible = isVisible;
+      isVisible = entry.isIntersecting;
+      if (isVisible && !wasVisible) {
+        cancelAnimationFrame(animId);
+        animId = requestAnimationFrame(animate);
+      }
+    }, { threshold: 0.05 });
+
+    observer.observe(container);
+
     const animate = () => {
+      if (!isVisible) return;
       animId = requestAnimationFrame(animate);
       clock += 0.012;
 
@@ -231,13 +244,14 @@ export default function Interactive3DTechMatrix() {
       renderer.render(scene, camera);
     };
 
-    animate();
+    animId = requestAnimationFrame(animate);
 
     return () => {
       domElement.removeEventListener('mousedown', onMouseDown);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);
       window.removeEventListener('resize', handleResize);
+      observer.disconnect();
       cancelAnimationFrame(animId);
       if (container && renderer.domElement) {
         container.removeChild(renderer.domElement);

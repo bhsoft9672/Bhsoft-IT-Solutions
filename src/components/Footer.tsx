@@ -25,6 +25,10 @@ export default function Footer() {
                 <img
                   src={SITE_CONFIG.logoImage}
                   alt="BHSOFT Logo"
+                  width={44}
+                  height={44}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -58,9 +62,9 @@ export default function Footer() {
 
           {/* Services Column */}
           <div className="space-y-3">
-            <h4 className="text-xs font-mono tracking-widest text-blue-700 uppercase font-bold">
+            <h3 className="text-xs font-mono tracking-widest text-blue-700 uppercase font-bold">
               Services
-            </h4>
+            </h3>
             <ul className="space-y-2 text-sm">
               {SERVICES_DATA.slice(0, 6).map((service) => (
                 <li key={service.id}>
@@ -86,9 +90,9 @@ export default function Footer() {
 
           {/* Company & Solutions Column */}
           <div className="space-y-3">
-            <h4 className="text-xs font-mono tracking-widest text-blue-700 uppercase font-bold">
+            <h3 className="text-xs font-mono tracking-widest text-blue-700 uppercase font-bold">
               Company & Legal
-            </h4>
+            </h3>
             <ul className="space-y-2 text-sm text-slate-600 font-medium">
               <li>
                 <Link href="/about" className="hover:text-blue-600 transition-colors">About BHSOFT</Link>
@@ -119,9 +123,9 @@ export default function Footer() {
 
           {/* Contact Direct Column */}
           <div className="space-y-3">
-            <h4 className="text-xs font-mono tracking-widest text-blue-700 uppercase font-bold">
+            <h3 className="text-xs font-mono tracking-widest text-blue-700 uppercase font-bold">
               Direct Contact
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm text-slate-600">
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />

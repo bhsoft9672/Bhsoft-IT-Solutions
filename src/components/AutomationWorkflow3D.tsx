@@ -137,7 +137,7 @@ export default function AutomationWorkflow3D() {
                 }`}
               >
                 <div className="flex items-center justify-between w-full">
-                  <span className={`text-[10px] font-mono font-bold ${isSelected ? 'text-blue-700' : 'text-slate-400'}`}>
+                  <span className={`text-[10px] font-mono font-bold ${isSelected ? 'text-blue-700' : 'text-slate-600'}`}>
                     0{index + 1}
                   </span>
                   <div className={`p-2 rounded-xl transition-colors ${isSelected ? 'bg-blue-600 text-white' : 'bg-white text-slate-700 group-hover:text-blue-600 border border-slate-200'}`}>
@@ -146,7 +146,7 @@ export default function AutomationWorkflow3D() {
                 </div>
 
                 <div>
-                  <div className={`text-[10px] font-mono tracking-wider uppercase line-clamp-1 font-semibold ${isSelected ? 'text-blue-700' : 'text-slate-500'}`}>
+                  <div className={`text-[10px] font-mono tracking-wider uppercase line-clamp-1 font-semibold ${isSelected ? 'text-blue-700' : 'text-slate-600'}`}>
                     {node.category}
                   </div>
                   <div className="text-xs font-bold text-slate-900 mt-0.5 group-hover:text-blue-600 transition-colors">
@@ -157,7 +157,7 @@ export default function AutomationWorkflow3D() {
 
               {/* Connecting arrow indicator for desktop */}
               {index < WORKFLOW_NODES.length - 1 && (
-                <div className="hidden lg:block absolute -right-2.5 top-1/2 -translate-y-1/2 z-20 text-slate-300 pointer-events-none">
+                <div className="hidden lg:block absolute -right-2.5 top-1/2 -translate-y-1/2 z-20 text-slate-400 pointer-events-none">
                   <ChevronRight className="w-4 h-4" />
                 </div>
               )}
@@ -177,9 +177,9 @@ export default function AutomationWorkflow3D() {
               <span className="text-[10px] font-mono tracking-widest text-blue-700 uppercase font-bold">
                 {selectedNode.category}
               </span>
-              <h4 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 {selectedNode.title}
-              </h4>
+              </h3>
             </div>
           </div>
 

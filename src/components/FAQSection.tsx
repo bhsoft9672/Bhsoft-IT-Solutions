@@ -67,7 +67,7 @@ export default function FAQSection() {
         {/* Custom inquiry prompt */}
         <div className="mt-12 p-6 rounded-3xl bg-blue-50/70 border border-blue-200 text-center flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-left">
-            <h4 className="text-sm font-bold text-slate-900">Have a specific question not listed here?</h4>
+            <h3 className="text-sm font-bold text-slate-900">Have a specific question not listed here?</h3>
             <p className="text-xs text-slate-600 mt-0.5">Chat directly with a solutions architect on WhatsApp.</p>
           </div>
           <a

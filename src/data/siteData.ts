@@ -256,7 +256,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     architectureOverview: "Edge-rendered Next.js storefront combined with resilient Node.js API services, automated currency hedging cache, and direct luxury concierge webhook bridges.",
     result: "Elevated brand prestige to compete with global luxury home decor houses, driving international buyer trust and increasing custom bespoke rug inquiries.",
     statusBadge: "Live Production Showcase",
-    image: "/images/projects/maira-rugs.jpg",
+    image: "/images/projects/maira-rugs.webp",
     stats: [
       { label: "Image Render Speed", value: "<450ms" },
       { label: "Global Currencies", value: "14+" },
@@ -283,7 +283,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     architectureOverview: "High-concurrency FastAPI microservice bridging Twilio media streams to Whisper STT, GPT-4o conversational engine, and low-latency ElevenLabs neural TTS.",
     result: "Achieved 94% call resolution rate without human receptionist intervention, dropping patient wait time to zero and eliminating appointment no-shows.",
     statusBadge: "Active AI Voice Production",
-    image: "/images/projects/shubh-voice-ai.jpg",
+    image: "/images/projects/shubh-voice-ai.webp",
     videoDemo: "voice-simulation",
     stats: [
       { label: "First Ring Answer", value: "100%" },
@@ -311,7 +311,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     architectureOverview: "Distributed worker architecture coordinating Twilio voice media forks with ultra-low latency Deepgram speech recognition and OpenAI GPT-4o reasoning agents.",
     result: "Scaled outbound prospect contact volume by 800% while cutting cost per qualified lead by 65%.",
     statusBadge: "Enterprise AI Agent System",
-    image: "/images/projects/ai-cold-caller.jpg",
+    image: "/images/projects/ai-cold-caller.webp",
     videoDemo: "outbound-dialer",
     stats: [
       { label: "Outbound Scale", value: "+800%" },
@@ -338,7 +338,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     architectureOverview: "Containerized Docker swarm running n8n workers with Redis message broker and PostgreSQL persistence, handling 50,000+ daily webhook events.",
     result: "Completely eliminated manual invoice dispatch and saved over 35 operational staff hours every week.",
     statusBadge: "Production Automation Suite",
-    image: "/images/projects/notifyflow-automation.jpg",
+    image: "/images/projects/notifyflow-automation.webp",
     videoDemo: "workflow-engine",
     stats: [
       { label: "Invoice Dispatch", value: "<1.8s" },
@@ -366,7 +366,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     architectureOverview: "High-performance Next.js frontend serving dynamic test catalogs with fast search filtering, coupled with instant WhatsApp webhook alerts for lab technicians.",
     result: "Transformed offline manual booking into a streamlined digital workflow with instant test discovery and verified online patient accessibility.",
     statusBadge: "Live Production Platform",
-    image: "/images/projects/ideal-pathlabs.jpg",
+    image: "/images/projects/ideal-pathlabs.webp",
     videoDemo: "diagnostic-portal",
     stats: [
       { label: "Report Delivery", value: "Instant WA" },
@@ -394,7 +394,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     architectureOverview: "Static-optimized React client application hosted on global CDN edges for zero latency, featuring responsive media galleries and direct inquiry hooks.",
     result: "Delivered a high-end luxury brand presentation that elevated client inquiries and streamlined digital product showcases.",
     statusBadge: "Live Production Showcase",
-    image: "/images/projects/fashiontxt-showcase.jpg",
+    image: "/images/projects/fashiontxt-showcase.webp",
     videoDemo: "fashion-lookbook",
     stats: [
       { label: "Load Speed", value: "<380ms" },
@@ -422,7 +422,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     architectureOverview: "Full-stack Next.js web application connected to a cloud database with automated WhatsApp message generation for order details.",
     result: "Enabled direct customer ordering, cutting third-party commission dependence and giving the business ownership over its customer database.",
     statusBadge: "Verified Business Platform",
-    image: "/images/projects/swadhub-ordering.jpg",
+    image: "/images/projects/swadhub-ordering.webp",
     videoDemo: "food-ordering",
     stats: [
       { label: "Commission Fee", value: "0%" },

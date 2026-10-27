@@ -77,6 +77,10 @@ export default function ProjectMediaCard({ project, variant = 'card' }: ProjectM
             <img
               src={project.image}
               alt={project.title}
+              width={600}
+              height={350}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
           ) : (
@@ -144,13 +148,13 @@ export default function ProjectMediaCard({ project, variant = 'card' }: ProjectM
                 </div>
 
                 {/* Animated Sound Waveform */}
-                <div className="flex items-center justify-center gap-1 sm:gap-1.5 py-1">
+                <div className="flex items-center justify-center gap-1 sm:gap-1.5 py-1 h-8">
                   {[25, 60, 95, 45, 80, 30, 90, 70, 40, 85, 35, 75, 50, 90, 65, 30, 85, 40].map((h, i) => (
                     <span
                       key={i}
-                      className="w-1 sm:w-1.5 bg-gradient-to-t from-blue-500 to-cyan-300 rounded-full transition-all duration-300"
+                      className="w-1 sm:w-1.5 h-8 bg-gradient-to-t from-blue-500 to-cyan-300 rounded-full transition-transform duration-300 origin-bottom"
                       style={{
-                        height: isPlaying ? `${(h * (0.3 + (simStep % 3) * 0.2))}px` : '6px',
+                        transform: isPlaying ? `scaleY(${Math.max(0.15, (h / 100) * (0.3 + (simStep % 3) * 0.2))})` : 'scaleY(0.2)',
                         opacity: isPlaying ? 1 : 0.4
                       }}
                     />
@@ -340,8 +344,8 @@ export default function ProjectMediaCard({ project, variant = 'card' }: ProjectM
             <div className="flex-1 mx-2">
               <div className="w-full bg-white/20 h-1.5 rounded-full overflow-hidden">
                 <div
-                  className="bg-gradient-to-r from-blue-500 to-cyan-400 h-full rounded-full transition-all duration-300"
-                  style={{ width: `${progress}%` }}
+                  className="bg-gradient-to-r from-blue-500 to-cyan-400 h-full w-full rounded-full transition-transform duration-300 origin-left"
+                  style={{ transform: `scaleX(${progress / 100})` }}
                 />
               </div>
             </div>

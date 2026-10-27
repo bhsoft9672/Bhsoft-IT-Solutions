@@ -47,6 +47,8 @@ export default function Navbar() {
               <img
                 src={SITE_CONFIG.logoImage}
                 alt="BHSOFT IT SOLUTION Logo"
+                width={44}
+                height={44}
                 className="w-full h-full object-cover"
               />
             </div>

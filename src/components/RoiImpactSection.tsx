@@ -36,7 +36,7 @@ export default function RoiImpactSection() {
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900">Sub-3-Second Inbound Lead Response</h4>
+                  <h3 className="text-sm font-bold text-slate-900">Sub-3-Second Inbound Lead Response</h3>
                   <p className="text-xs text-slate-600 font-normal">Captures prospects while their intent is hot, preventing lead drift to competitors.</p>
                 </div>
               </div>
@@ -44,7 +44,7 @@ export default function RoiImpactSection() {
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900">Zero Copy-Paste Data Drift</h4>
+                  <h3 className="text-sm font-bold text-slate-900">Zero Copy-Paste Data Drift</h3>
                   <p className="text-xs text-slate-600 font-normal">Automated webhooks keep PostgreSQL, HubSpot, and WhatsApp completely in sync.</p>
                 </div>
               </div>
@@ -52,7 +52,7 @@ export default function RoiImpactSection() {
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900">Reclaimed High-Value Team Time</h4>
+                  <h3 className="text-sm font-bold text-slate-900">Reclaimed High-Value Team Time</h3>
                   <p className="text-xs text-slate-600 font-normal">Your staff shifts from manual dispatching to closing qualified clients and servicing customers.</p>
                 </div>
               </div>
@@ -76,10 +76,14 @@ export default function RoiImpactSection() {
                 {/* Hours Slider */}
                 <div>
                   <div className="flex justify-between text-xs font-mono mb-2">
-                    <span className="text-slate-700 font-semibold">Repetitive Tasks per Employee (Hours / Week):</span>
+                    <label htmlFor="manual-hours-slider" className="text-slate-700 font-semibold cursor-pointer">
+                      Repetitive Tasks per Employee (Hours / Week):
+                    </label>
                     <span className="text-blue-600 font-bold text-sm">{weeklyManualHours} hrs</span>
                   </div>
                   <input
+                    id="manual-hours-slider"
+                    aria-label="Repetitive Tasks per Employee in Hours per Week"
                     type="range"
                     min="5"
                     max="40"
@@ -92,10 +96,14 @@ export default function RoiImpactSection() {
                 {/* Team Members Slider */}
                 <div>
                   <div className="flex justify-between text-xs font-mono mb-2">
-                    <span className="text-slate-700 font-semibold">Affected Team Members:</span>
+                    <label htmlFor="team-members-slider" className="text-slate-700 font-semibold cursor-pointer">
+                      Affected Team Members:
+                    </label>
                     <span className="text-blue-600 font-bold text-sm">{teamMembers} people</span>
                   </div>
                   <input
+                    id="team-members-slider"
+                    aria-label="Affected Team Members"
                     type="range"
                     min="1"
                     max="25"

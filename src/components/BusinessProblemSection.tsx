@@ -49,11 +49,11 @@ export default function BusinessProblemSection() {
               key={i}
               className="p-5 rounded-2xl bg-slate-50/80 border border-rose-200/80 hover:border-rose-300 transition-colors shadow-xs"
             >
-              <div className="flex items-center gap-2.5 text-rose-600 text-sm font-bold mb-1.5">
-                <XCircle className="w-4 h-4 shrink-0" />
+              <div className="flex items-center gap-2.5 text-rose-700 text-sm font-bold mb-1.5">
+                <XCircle className="w-4 h-4 shrink-0 text-rose-700" />
                 <span>{prob.title}</span>
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed pl-6">
+              <p className="text-xs text-slate-700 leading-relaxed pl-6">
                 {prob.desc}
               </p>
             </div>

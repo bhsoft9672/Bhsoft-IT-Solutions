@@ -214,10 +214,24 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
     };
     window.addEventListener('resize', handleResize);
 
-    // Render Animation Loop
+    // Intersection Observer to pause rendering when offscreen (eliminates idle CPU/GPU load)
+    let isVisible = true;
     let animId: number;
     let clock = 0;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      const wasVisible = isVisible;
+      isVisible = entry.isIntersecting;
+      if (isVisible && !wasVisible) {
+        cancelAnimationFrame(animId);
+        animId = requestAnimationFrame(animate);
+      }
+    }, { threshold: 0.05 });
+
+    observer.observe(container);
+
     const animate = () => {
+      if (!isVisible) return;
       animId = requestAnimationFrame(animate);
       clock += 0.015;
 
@@ -269,12 +283,13 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
       renderer.render(scene, camera);
     };
 
-    animate();
+    animId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       renderer.domElement.removeEventListener('click', handleClick);
       window.removeEventListener('resize', handleResize);
+      observer.disconnect();
       cancelAnimationFrame(animId);
       if (container && renderer.domElement) {
         container.removeChild(renderer.domElement);
@@ -286,8 +301,9 @@ export default function Hero3DCore({ className = '' }: Hero3DCoreProps) {
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-[300px] sm:h-[450px] lg:h-[580px] flex items-center justify-center pointer-events-auto ${className}`}
+      role="region"
       aria-label="Interactive 3D AI Digital Core"
+      className={`relative w-full h-[300px] sm:h-[450px] lg:h-[580px] flex items-center justify-center pointer-events-auto ${className}`}
     >
       {/* Background radial light glow */}
       <div className="absolute inset-0 bg-radial from-blue-500/15 via-purple-500/10 to-transparent blur-3xl pointer-events-none" />

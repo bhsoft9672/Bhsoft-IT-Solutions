@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   legalName: "BHSOFT IT SOLUTION",
   siteUrl: "https://bhsoft.solutions",
   domain: "bhsoft.solutions",
-  logoImage: "/bhsoft-logo.png",
+  logoImage: "/bhsoft-logo-small.webp",
   tagline: "SOFTWARE • WEBSITES • AUTOMATION",
   heroSubtitle: "BHSOFT IT SOLUTION builds autonomous AI calling agents, intelligent automation pipelines, high-performance websites, mobile apps and custom software that help businesses eliminate manual bottlenecks and scale revenue.",
   whatsappNumber: "+918920608191",
