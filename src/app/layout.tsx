@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/bhsoft-logo.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'BHSOFT IT SOLUTION - AI Agents, Automation & Software Engineering'
@@ -76,7 +76,13 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: SITE_CONFIG.metaTitle,
     description: SITE_CONFIG.metaDescription,
-    images: ['/bhsoft-logo.png']
+    images: ['/og-image.png']
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    other: {
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '',
+    },
   },
   robots: {
     index: true,
@@ -105,6 +111,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
       </head>
       <body className="bg-[#f8fafc] text-slate-900 antialiased selection:bg-blue-600 selection:text-white">
         <JsonLd type="global" />
