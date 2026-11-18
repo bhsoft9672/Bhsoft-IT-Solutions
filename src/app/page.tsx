@@ -1,10 +1,13 @@
 'use client';
 
 import React from 'react';
+import PromoBanner from '@/components/PromoBanner';
 import HeroSection from '@/components/HeroSection';
 import TrustBar from '@/components/TrustBar';
 import AiVideoShowcaseSection from '@/components/AiVideoShowcaseSection';
 import ServicesSection from '@/components/ServicesSection';
+import TrendingSolutionsSection from '@/components/TrendingSolutionsSection';
+import ProductsShowcaseSection from '@/components/ProductsShowcaseSection';
 import BusinessProblemSection from '@/components/BusinessProblemSection';
 import AutomationWorkflow3D from '@/components/AutomationWorkflow3D';
 import IndustrySolutionsSection from '@/components/IndustrySolutionsSection';
@@ -27,6 +30,9 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-slate-50/50">
+      {/* 0. Top Special Announcement Banner */}
+      <PromoBanner />
+
       {/* 1. Full-Screen 3D Hero */}
       <HeroSection />
 
@@ -38,6 +44,12 @@ export default function HomePage() {
 
       {/* 3. Services Section with Interactive 3D/Modal Experience */}
       <ServicesSection />
+
+      {/* 3.5 Trending Solutions & Turnkey Blueprints (Image 1 reference) */}
+      <TrendingSolutionsSection />
+
+      {/* 3.8 Pre-Built Ready-to-Deploy Software Products */}
+      <ProductsShowcaseSection />
 
       {/* 4. Business Problem vs AI Transformation Section */}
       <BusinessProblemSection />
@@ -64,10 +76,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. Industry Solutions */}
+      {/* 7. Industry Solutions (Image 2 reference) */}
       <IndustrySolutionsSection />
 
-      {/* 8. Selected Work & Production Platforms */}
+      {/* 8. Selected Work & Production Platforms with Live URLs */}
       <SelectedWorkSection />
 
       {/* 9. Technology Ecosystem */}

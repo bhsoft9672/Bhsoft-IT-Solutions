@@ -268,6 +268,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: "Shubh Life Clinic Voice AI",
     subtitle: "Autonomous Healthcare Receptionist & Patient Appointment Voice Agent",
     industry: "Healthcare & AI Voice Automation",
+    url: "https://bhsoft.solutions/services/voice-ai-agents#demo",
     servicesProvided: ["Autonomous Voice Calling Agent", "Twilio SIP Trunking", "Doctor Calendar Synchronization", "WhatsApp Prescription Alerts"],
     techStack: ["Python", "FastAPI", "OpenAI Whisper STT", "GPT-4o Realtime", "ElevenLabs Voice", "Twilio Voice API", "Google Calendar API"],
     challenge: "Clinic reception was overwhelmed with 150+ daily incoming calls for doctor schedules, emergency queries, and rescheduling, causing missed calls and 15-minute wait times for anxious patients.",
@@ -296,6 +297,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: "AI Cold Caller & Outbound Sales Agent",
     subtitle: "Enterprise Outbound Telephony & Autonomous Lead Qualification Machine",
     industry: "B2B Sales & Outbound Telemarketing",
+    url: "https://bhsoft.solutions/services/voice-ai-agents",
     servicesProvided: ["Autonomous Outbound Dialer", "Conversational AI Sales Engine", "CRM Bi-directional Sync", "Real-Time Sentiment Analytics"],
     techStack: ["Node.js", "Python", "Twilio Voice API", "OpenAI GPT-4o", "Deepgram Nova", "PostgreSQL", "n8n Pipelines"],
     challenge: "Sales teams spent 70% of their workday dialing cold prospects, getting hung up on, and manually updating CRM notes, resulting in sales burnout and low conversion throughput.",
@@ -324,6 +326,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     title: "NotifyFlow Automation Engine",
     subtitle: "Omnichannel Business Process Automation & Cross-Platform Orchestration",
     industry: "Enterprise Workflow Automation",
+    url: "https://bhsoft.solutions/services/automation",
     servicesProvided: ["n8n Enterprise Automation", "Custom Webhook Infrastructure", "WhatsApp Cloud Sync", "Database Reconciliation"],
     techStack: ["n8n", "Node.js", "PostgreSQL", "Redis", "Meta WhatsApp API", "Stripe Webhooks", "Docker"],
     challenge: "Mid-market companies were losing orders and hours because incoming payments, inventory changes, and WhatsApp notifications were managed via disconnected, manual spreadsheets.",
@@ -615,3 +618,11 @@ export const TECH_STACK_CATEGORIES = [
     items: ["Docker", "Nginx", "Vercel", "AWS / GCP", "Cloudflare CDN", "GitHub CI/CD"]
   }
 ];
+
+// Re-export extended modules for comprehensive coverage
+export * from './blueprintsData';
+export * from './expandedIndustriesData';
+export * from './productsData';
+export * from './testimonialsData';
+export * from './blogData';
+

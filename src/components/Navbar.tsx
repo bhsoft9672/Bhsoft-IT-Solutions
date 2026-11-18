@@ -22,10 +22,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Solutions', href: '/#solutions' },
-    { name: 'Workflow', href: '/#workflow' },
+    { name: 'Blueprints', href: '/#blueprints' },
+    { name: 'Industries', href: '/#industries' },
+    { name: 'Products', href: '/#products' },
     { name: 'Projects', href: '/projects' },
-    { name: 'Process', href: '/#process' },
+    { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];

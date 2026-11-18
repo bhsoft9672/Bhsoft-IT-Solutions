@@ -91,32 +91,38 @@ export default function Footer() {
           {/* Company & Solutions Column */}
           <div className="space-y-3">
             <h3 className="text-xs font-mono tracking-widest text-blue-700 uppercase font-bold">
-              Company & Legal
+              Company &amp; Resources
             </h3>
             <ul className="space-y-2 text-sm text-slate-600 font-medium">
               <li>
                 <Link href="/about" className="hover:text-blue-600 transition-colors">About BHSOFT</Link>
               </li>
               <li>
-                <Link href="/#solutions" className="hover:text-blue-600 transition-colors">Industry Solutions</Link>
+                <Link href="/blog" className="text-blue-600 font-bold hover:text-blue-800 transition-colors flex items-center gap-1">
+                  <span>Engineering Blog</span>
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-blue-100 text-blue-700 font-bold">NEW</span>
+                </Link>
               </li>
               <li>
-                <Link href="/projects" className="hover:text-blue-600 transition-colors">Selected Projects</Link>
+                <Link href="/#blueprints" className="hover:text-blue-600 transition-colors">Turnkey Blueprints (94)</Link>
               </li>
               <li>
-                <Link href="/#process" className="hover:text-blue-600 transition-colors">Engineering Process</Link>
+                <Link href="/#industries" className="hover:text-blue-600 transition-colors">Industries We Serve</Link>
               </li>
               <li>
-                <Link href="/#faqs" className="hover:text-blue-600 transition-colors">Knowledge Base (FAQ)</Link>
+                <Link href="/#products" className="hover:text-blue-600 transition-colors">Pre-Built Products</Link>
+              </li>
+              <li>
+                <Link href="/projects" className="hover:text-blue-600 transition-colors">Production Portfolio</Link>
+              </li>
+              <li>
+                <Link href="/#testimonials" className="hover:text-blue-600 transition-colors">Verified Reviews</Link>
               </li>
               <li>
                 <Link href="/privacy-policy" className="hover:text-blue-600 transition-colors">Privacy Policy</Link>
               </li>
               <li>
-                <Link href="/terms-and-conditions" className="hover:text-blue-600 transition-colors">Terms & Conditions</Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-blue-600 transition-colors">Book Consultation</Link>
+                <Link href="/terms-and-conditions" className="hover:text-blue-600 transition-colors">Terms &amp; Conditions</Link>
               </li>
             </ul>
           </div>

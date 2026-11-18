@@ -95,13 +95,13 @@ export default function SelectedWorkSection() {
                 </div>
               </div>
 
-              {/* Bottom Card Footer */}
-              <div className="p-6 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between gap-3">
+              {/* Bottom Card Footer with Prominent Live URL & Case Study */}
+              <div className="p-5 bg-slate-50/80 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
                 <Link
                   href={`/projects/${proj.slug}`}
-                  className="text-xs font-bold text-slate-800 group-hover:text-blue-600 flex items-center gap-1 transition-colors"
+                  className="text-xs font-bold text-slate-800 hover:text-blue-600 flex items-center gap-1 transition-colors"
                 >
-                  <span>View Case Study</span>
+                  <span>Case Study</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
 
@@ -110,10 +110,11 @@ export default function SelectedWorkSection() {
                     href={proj.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-300 transition-colors shadow-2xs"
-                    title="Visit Live Application"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white border border-blue-200 hover:border-blue-600 text-[11px] font-mono font-bold transition-all shadow-2xs hover:scale-105 active:scale-95"
+                    title={`Visit ${proj.title} live production deployment`}
                   >
-                    <ExternalLink className="w-4 h-4" />
+                    <span>Live Preview</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 )}
               </div>

@@ -159,22 +159,23 @@ export default function ProjectsPage() {
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-3 pt-3 border-t border-slate-200">
+                  <div className="flex flex-col sm:flex-row items-center gap-2 pt-3 border-t border-slate-200">
                     <Link
                       href={`/projects/${proj.slug}`}
-                      className="flex-1 py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs uppercase tracking-wider text-center transition-all shadow-md hover:scale-102 active:scale-98"
+                      className="flex-1 w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs uppercase tracking-wider text-center transition-all shadow-md hover:scale-102 active:scale-98"
                     >
-                      View Deep Case Study →
+                      Case Study →
                     </Link>
                     {proj.url && (
                       <a
                         href={proj.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-3 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-300 transition-colors shadow-2xs"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl bg-white border border-slate-300 hover:border-blue-500 text-blue-700 font-bold text-xs uppercase tracking-wider transition-colors shadow-2xs hover:bg-blue-50"
                         title="Visit Live Application"
                       >
-                        <ExternalLink className="w-4 h-4" />
+                        <span>Live Preview</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
                       </a>
                     )}
                   </div>
