@@ -10,18 +10,24 @@ export default function HeroSection() {
   const whatsappUrl = `https://wa.me/${SITE_CONFIG.whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(SITE_CONFIG.whatsappMessage)}`;
 
   return (
-    <section className="relative min-h-[90vh] lg:min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden bg-grid-pattern-light">
+    <section 
+      className="relative min-h-[92vh] lg:min-h-screen pt-32 pb-20 flex items-center justify-center overflow-hidden bg-cover bg-top bg-no-repeat"
+      style={{ backgroundImage: "url('/images/header-bg.webp')" }}
+    >
+      {/* Soft gradient blend for optimal reading contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-slate-50/90 pointer-events-none" />
+
       {/* Light Theme Ambient Glow Blobs */}
-      <div className="ambient-glow-light -top-20 -left-20 w-[550px] h-[550px] bg-blue-400/20" />
-      <div className="ambient-glow-light top-1/3 -right-20 w-[650px] h-[650px] bg-purple-400/15" />
-      <div className="ambient-glow-light -bottom-20 left-1/4 w-[500px] h-[500px] bg-cyan-400/15" />
+      <div className="ambient-glow-light -top-20 -left-20 w-[550px] h-[550px] bg-blue-400/25 pointer-events-none" />
+      <div className="ambient-glow-light top-1/3 -right-20 w-[650px] h-[650px] bg-purple-400/20 pointer-events-none" />
+      <div className="ambient-glow-light -bottom-20 left-1/4 w-[500px] h-[500px] bg-cyan-400/20 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Core Value Proposition & Conversion CTAs */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-left">
             {/* Top Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs font-mono font-bold tracking-wide shadow-sm">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-blue-200/90 text-blue-700 text-xs font-mono font-bold tracking-wide shadow-sm">
               <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-ping" />
               <span>● SOFTWARE • WEBSITES • AUTOMATION • AI CALLING AGENTS</span>
             </div>
@@ -43,7 +49,7 @@ export default function HeroSection() {
             </div>
 
             {/* Supporting Copy */}
-            <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed font-normal">
               {SITE_CONFIG.heroSubtitle}
             </p>
 
@@ -76,7 +82,7 @@ export default function HeroSection() {
             </div>
 
             {/* 5-Second Trust Proof */}
-            <div className="pt-6 flex flex-wrap items-center gap-8 text-xs text-slate-600 border-t border-slate-200">
+            <div className="pt-6 flex flex-wrap items-center gap-8 text-xs text-slate-700 border-t border-slate-200/80">
               <div className="flex items-center gap-2">
                 <span className="text-blue-600 font-extrabold text-sm">24/7</span>
                 <span className="font-semibold">Autonomous Operation</span>
@@ -94,6 +100,19 @@ export default function HeroSection() {
 
           {/* Right Column: 3D Interactive AI Digital Core */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
+            {/* Floating Top-Right Mini Badge */}
+            <div className="absolute top-2 -right-2 z-20 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-lg text-[11px] font-mono font-bold text-slate-800 animate-in fade-in duration-500">
+              <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping" />
+              <span>Next.js 16 • Turbopack Engine</span>
+            </div>
+
+            {/* Floating Mid-Left Mini Badge */}
+            <div className="absolute top-1/2 -left-6 z-20 hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-lg text-[11px] font-mono font-bold text-slate-800 animate-in fade-in duration-500">
+              <span className="text-emerald-600 font-black">94%</span>
+              <span>Routine Call Resolution</span>
+            </div>
+
+            {/* 3D Core Canvas Component */}
             <Hero3DCore />
 
             {/* Floating Live AI Stream Telemetry Pill */}
